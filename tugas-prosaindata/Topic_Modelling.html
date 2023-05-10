@@ -1,0 +1,3439 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Topic Modelling &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'tugas-prosaindata/Topic_Modelling';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/profile.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/profile.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="21_018_Afirza_Lucky_Pradana_UTS.html">UTS Proyek Sains Data</a></li>
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Ftugas-prosaindata/Topic_Modelling.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/tugas-prosaindata/Topic_Modelling.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Topic Modelling</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crawling-data-dari-komentar-youtube">Crawling Data Dari Komentar Youtube</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing">Preprocessing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#symbol-punctuation-removal-case-folding">1. Symbol &amp; Punctuation Removal, case folding</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenizing">2. Tokenizing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#word-normalization">3. Word Normalization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stopwords-removal">4. Stopwords Removal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stemming">5. Stemming</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-extraction-tf-idf">Feature Extraction (TF-IDF)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#latent-semantic-analysis-lsa">Latent Semantic Analysis (LSA)</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="tex2jax_ignore mathjax_ignore section" id="topic-modelling">
+<h1>Topic Modelling<a class="headerlink" href="#topic-modelling" title="Permalink to this heading">#</a></h1>
+<div class="section" id="crawling-data-dari-komentar-youtube">
+<h2>Crawling Data Dari Komentar Youtube<a class="headerlink" href="#crawling-data-dari-komentar-youtube" title="Permalink to this heading">#</a></h2>
+<p>Program ini bertujuan untuk melakukan pengambilan data komentar pada sebuah video YouTube menggunakan Youtube Data API v3. Sebelum menggunakan program ini, pastikan bahwa layanan Youtube Data API telah diaktifkan dan API Key sudah di-generate.</p>
+<p>Jika Anda belum memiliki API Key, berikut adalah langkah-langkah untuk memperolehnya:</p>
+<ol class="arabic simple">
+<li><p>Login ke Google Developer Console (<a class="reference external" href="https://console.developers.google.com/">https://console.developers.google.com/</a>) dengan akun Google Anda.</p></li>
+<li><p>Buatlah project baru dan isi informasi yang diminta.</p></li>
+<li><p>Aktifkan layanan API pada halaman project dan cari Youtube Data API v3.</p></li>
+<li><p>Buat kredensial agar API tersebut dapat digunakan. Klik tombol “Create Credential” dan lengkapi form yang diminta.</p></li>
+</ol>
+<p>Anda dapat mengakses/melihat API Key pada tab Credentials di dashboard.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
+<span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/content/drive&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">KeyboardInterrupt</span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-1-d5df0069828e&gt;</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/content/drive&#39;</span><span class="p">)</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/google/colab/drive.py</span> in <span class="ni">mount</span><span class="nt">(mountpoint, force_remount, timeout_ms, readonly)</span>
+<span class="g g-Whitespace">    </span><span class="mi">101</span> <span class="k">def</span> <span class="nf">mount</span><span class="p">(</span><span class="n">mountpoint</span><span class="p">,</span> <span class="n">force_remount</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">timeout_ms</span><span class="o">=</span><span class="mi">120000</span><span class="p">,</span> <span class="n">readonly</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">102</span><span class="w">   </span><span class="sd">&quot;&quot;&quot;Mount your Google Drive at the specified mountpoint path.&quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">103</span>   <span class="k">return</span> <span class="n">_mount</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">104</span>       <span class="n">mountpoint</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">105</span>       <span class="n">force_remount</span><span class="o">=</span><span class="n">force_remount</span><span class="p">,</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/google/colab/drive.py</span> in <span class="ni">_mount</span><span class="nt">(mountpoint, force_remount, timeout_ms, ephemeral, readonly)</span>
+<span class="g g-Whitespace">    </span><span class="mi">130</span>   <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">131</span>   <span class="k">if</span> <span class="n">ephemeral</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">132</span>     <span class="n">_message</span><span class="o">.</span><span class="n">blocking_request</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">133</span>         <span class="s1">&#39;request_auth&#39;</span><span class="p">,</span> <span class="n">request</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;authType&#39;</span><span class="p">:</span> <span class="s1">&#39;dfs_ephemeral&#39;</span><span class="p">},</span> <span class="n">timeout_sec</span><span class="o">=</span><span class="kc">None</span>
+<span class="g g-Whitespace">    </span><span class="mi">134</span>     <span class="p">)</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/google/colab/_message.py</span> in <span class="ni">blocking_request</span><span class="nt">(request_type, request, timeout_sec, parent)</span>
+<span class="g g-Whitespace">    </span><span class="mi">174</span>       <span class="n">request_type</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">parent</span><span class="p">,</span> <span class="n">expect_reply</span><span class="o">=</span><span class="kc">True</span>
+<span class="g g-Whitespace">    </span><span class="mi">175</span>   <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">176</span>   <span class="k">return</span> <span class="n">read_reply_from_input</span><span class="p">(</span><span class="n">request_id</span><span class="p">,</span> <span class="n">timeout_sec</span><span class="p">)</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/google/colab/_message.py</span> in <span class="ni">read_reply_from_input</span><span class="nt">(message_id, timeout_sec)</span>
+<span class="g g-Whitespace">     </span><span class="mi">94</span>     <span class="n">reply</span> <span class="o">=</span> <span class="n">_read_next_input_message</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">95</span>     <span class="k">if</span> <span class="n">reply</span> <span class="o">==</span> <span class="n">_NOT_READY</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">reply</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+<span class="ne">---&gt; </span><span class="mi">96</span>       <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.025</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">97</span>       <span class="k">continue</span>
+<span class="g g-Whitespace">     </span><span class="mi">98</span>     <span class="k">if</span> <span class="p">(</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#import library</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">googleapiclient.discovery</span> <span class="kn">import</span> <span class="n">build</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">string</span> <span class="kn">import</span> <span class="n">punctuation</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">nltk</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Membuat function untuk crawling data</span>
+<span class="k">def</span> <span class="nf">video_comments</span><span class="p">(</span><span class="n">video_id</span><span class="p">):</span>
+	<span class="c1"># empty list for storing reply</span>
+	<span class="n">replies</span> <span class="o">=</span> <span class="p">[]</span>
+
+	<span class="c1"># creating youtube resource object</span>
+	<span class="n">youtube</span> <span class="o">=</span> <span class="n">build</span><span class="p">(</span><span class="s1">&#39;youtube&#39;</span><span class="p">,</span> <span class="s1">&#39;v3&#39;</span><span class="p">,</span> <span class="n">developerKey</span><span class="o">=</span><span class="n">api_key</span><span class="p">)</span>
+
+	<span class="c1"># retrieve youtube video results</span>
+	<span class="n">video_response</span> <span class="o">=</span> <span class="n">youtube</span><span class="o">.</span><span class="n">commentThreads</span><span class="p">()</span><span class="o">.</span><span class="n">list</span><span class="p">(</span><span class="n">part</span><span class="o">=</span><span class="s1">&#39;snippet,replies&#39;</span><span class="p">,</span> <span class="n">videoId</span><span class="o">=</span><span class="n">video_id</span><span class="p">)</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+
+	<span class="c1"># iterate video response</span>
+	<span class="k">while</span> <span class="n">video_response</span><span class="p">:</span>
+		
+		<span class="c1"># extracting required info</span>
+		<span class="c1"># from each result object</span>
+		<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">video_response</span><span class="p">[</span><span class="s1">&#39;items&#39;</span><span class="p">]:</span>
+			
+			<span class="c1"># Extracting comments ()</span>
+			<span class="n">published</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;snippet&#39;</span><span class="p">][</span><span class="s1">&#39;topLevelComment&#39;</span><span class="p">][</span><span class="s1">&#39;snippet&#39;</span><span class="p">][</span><span class="s1">&#39;publishedAt&#39;</span><span class="p">]</span>
+			<span class="n">user</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;snippet&#39;</span><span class="p">][</span><span class="s1">&#39;topLevelComment&#39;</span><span class="p">][</span><span class="s1">&#39;snippet&#39;</span><span class="p">][</span><span class="s1">&#39;authorDisplayName&#39;</span><span class="p">]</span>
+
+			<span class="c1"># Extracting comments</span>
+			<span class="n">comment</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;snippet&#39;</span><span class="p">][</span><span class="s1">&#39;topLevelComment&#39;</span><span class="p">][</span><span class="s1">&#39;snippet&#39;</span><span class="p">][</span><span class="s1">&#39;textDisplay&#39;</span><span class="p">]</span>
+			<span class="n">likeCount</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;snippet&#39;</span><span class="p">][</span><span class="s1">&#39;topLevelComment&#39;</span><span class="p">][</span><span class="s1">&#39;snippet&#39;</span><span class="p">][</span><span class="s1">&#39;likeCount&#39;</span><span class="p">]</span>
+
+			<span class="n">replies</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">published</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">comment</span><span class="p">,</span> <span class="n">likeCount</span><span class="p">])</span>
+			
+			<span class="c1"># counting number of reply of comment</span>
+			<span class="n">replycount</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;snippet&#39;</span><span class="p">][</span><span class="s1">&#39;totalReplyCount&#39;</span><span class="p">]</span>
+
+			<span class="c1"># if reply is there</span>
+			<span class="k">if</span> <span class="n">replycount</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
+				<span class="c1"># iterate through all reply</span>
+				<span class="k">for</span> <span class="n">reply</span> <span class="ow">in</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;replies&#39;</span><span class="p">][</span><span class="s1">&#39;comments&#39;</span><span class="p">]:</span>
+					
+					<span class="c1"># Extract reply</span>
+					<span class="n">published</span> <span class="o">=</span> <span class="n">reply</span><span class="p">[</span><span class="s1">&#39;snippet&#39;</span><span class="p">][</span><span class="s1">&#39;publishedAt&#39;</span><span class="p">]</span>
+					<span class="n">user</span> <span class="o">=</span> <span class="n">reply</span><span class="p">[</span><span class="s1">&#39;snippet&#39;</span><span class="p">][</span><span class="s1">&#39;authorDisplayName&#39;</span><span class="p">]</span>
+					<span class="n">repl</span> <span class="o">=</span> <span class="n">reply</span><span class="p">[</span><span class="s1">&#39;snippet&#39;</span><span class="p">][</span><span class="s1">&#39;textDisplay&#39;</span><span class="p">]</span>
+					<span class="n">likeCount</span> <span class="o">=</span> <span class="n">reply</span><span class="p">[</span><span class="s1">&#39;snippet&#39;</span><span class="p">][</span><span class="s1">&#39;likeCount&#39;</span><span class="p">]</span>
+					
+					<span class="c1"># Store reply is list</span>
+					<span class="c1">#replies.append(reply)</span>
+					<span class="n">replies</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">published</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">repl</span><span class="p">,</span> <span class="n">likeCount</span><span class="p">])</span>
+
+			<span class="c1"># print comment with list of reply</span>
+			<span class="c1">#print(comment, replies, end = &#39;\n\n&#39;)</span>
+
+			<span class="c1"># empty reply list</span>
+			<span class="c1">#replies = []</span>
+
+		<span class="c1"># Again repeat</span>
+		<span class="k">if</span> <span class="s1">&#39;nextPageToken&#39;</span> <span class="ow">in</span> <span class="n">video_response</span><span class="p">:</span>
+			<span class="n">video_response</span> <span class="o">=</span> <span class="n">youtube</span><span class="o">.</span><span class="n">commentThreads</span><span class="p">()</span><span class="o">.</span><span class="n">list</span><span class="p">(</span>
+					<span class="n">part</span> <span class="o">=</span> <span class="s1">&#39;snippet,replies&#39;</span><span class="p">,</span>
+					<span class="n">pageToken</span> <span class="o">=</span> <span class="n">video_response</span><span class="p">[</span><span class="s1">&#39;nextPageToken&#39;</span><span class="p">],</span> 
+					<span class="n">videoId</span> <span class="o">=</span> <span class="n">video_id</span>
+				<span class="p">)</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="k">break</span>
+	<span class="c1">#endwhile</span>
+	<span class="k">return</span> <span class="n">replies</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># isikan dengan api key Anda</span>
+<span class="n">api_key</span> <span class="o">=</span> <span class="s1">&#39;AIzaSyAq6xFuf3fYN-2-ppUzOEJVOkfHuIi9ipI&#39;</span>
+
+<span class="c1"># url video =https://youtu.be/lcpdHr51a2s</span>
+<span class="n">video_id</span> <span class="o">=</span> <span class="s2">&quot;lcpdHr51a2s&quot;</span> <span class="c1">#isikan dengan kode / ID video</span>
+
+<span class="c1"># Call function</span>
+<span class="n">comments</span> <span class="o">=</span> <span class="n">video_comments</span><span class="p">(</span><span class="n">video_id</span><span class="p">)</span>
+
+<span class="n">comments</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[&#39;2023-05-10T12:08:32Z&#39;,
+  &#39;Putra Putri&#39;,
+  &#39;Ora pengaruh bro,,bah jokowi endorse bah cawe cawe. &lt;br&gt;ingat 2024 joe biden tidak tinggal diam.!! Catat.&#39;,
+  0],
+ [&#39;2023-05-10T08:55:05Z&#39;,
+  &#39;Taufik Hasan&#39;,
+  &#39;Jelas dong JK &amp;amp; Paloh ketar ketir,, kalau sampe ANIS kalah hilang kesempatan mereka ngeruk &lt;b&gt;DUIT&lt;/b&gt; Rakyat,, melakui Proyek2 BUMN, karna jaman JokoWi mereka kekunci,, mangkanya &lt;b&gt;BOSOWA&lt;/b&gt; Oleng,, Karna itu Keluarga JK turun bela ANIS,,,, 😅🤣&#39;,
+  1],
+ [&#39;2023-05-10T08:04:32Z&#39;, &#39;a vian&#39;, &#39;jusufkala anda itu orqngtua loh&#39;, 0],
+ [&#39;2023-05-10T07:12:57Z&#39;,
+  &#39;ilham bobotoh&#39;,
+  &#39;MURTAD YOHANES BUNGLON  PENGHIANAT BANGSA CAPRES KO HINA NENARA TAMU&#39;,
+  0],
+ [&#39;2023-05-10T07:12:25Z&#39;,
+  &#39;ilham bobotoh&#39;,
+  &#39;MURTAD YOHANES BINGLON TAKUT KALAH MAKANYA DIA TAKUT KALAH&#39;,
+  1],
+ [&#39;2023-05-10T07:11:39Z&#39;,
+  &#39;ilham bobotoh&#39;,
+  &#39;JK ITU PENGHIANAT BANGSA SI BUNGLON DARI YAMAN  SMUA KADRUN BADJINGAN KABEH PENGEN KORUPSI&#39;,
+  0],
+ [&#39;2023-05-10T05:05:43Z&#39;, &#39;Is Kandar&#39;, &#39;Barangkali ada modal yg masuk&#39;, 1],
+ [&#39;2023-05-10T04:55:47Z&#39;,
+  &#39;RDS88 official&#39;,
+  &#39;Saya tidak pro Jokowi dari awal yaa😂&#39;,
+  1],
+ [&#39;2023-05-10T04:45:58Z&#39;,
+  &#39;Aki Genit 79&#39;,
+  &#39;Semua ingin jadi presiden, meskipun Tdk jadi presiden negara&amp;#39; jadi presiden rumah tangga yg baik saja itu sudah 👍👍👍 .&#39;,
+  1],
+ [&#39;2023-05-10T03:56:32Z&#39;,
+  &#39;Sahi Rudin&#39;,
+  &#39;Biarlah urusan politik jgn di kaitkan dg agama.biar mrk berkata apa2 tentang agamanya kita gak usah ikut2.mrk pnya tgg jawab sendiri.masalah peresiden ikut mendukung slh satu capres gak masalah yg milih kan rakyat.smg rakyat indonesia pada sadar bertahun tahun bgmn kehidupan raakyat.anda yg merasakan.&#39;,
+  0],
+ [&#39;2023-05-10T03:00:49Z&#39;,
+  &#39;WHeduez Ghiebaez&#39;,
+  &#39;Kumis tipis masih belum puas karena pa di era Jokowi bisnis kumis tipis banyak yg lingkup atau tutup 😁😁😁&#39;,
+  1],
+ [&#39;2023-05-10T02:13:45Z&#39;,
+  &#39;akio ciputra&#39;,
+  &#39;Si caplin jk ketar ketir! Maju terus pak jokowi!&#39;,
+  1],
+ [&#39;2023-05-09T22:25:53Z&#39;,
+  &#39;zainal arifin&#39;,
+  &#39;Jokowi  petugas partai bukan negarawan sejati🤣🤣🤣&#39;,
+  1],
+ [&#39;2023-05-09T22:17:35Z&#39;, &#39;Mobile Game&#39;, &#39;😅 rekam jejak Anis benar ?&#39;, 0],
+ [&#39;2023-05-09T18:29:32Z&#39;,
+  &#39;petualang chanel😱&#39;,
+  &#39;Awas JK udh terpilih cmn duduk di kursi&#39;,
+  1],
+ [&#39;2023-05-09T17:02:43Z&#39;, &#39;berak&#39;, &#39;Chaplin nih tiap pilpres pasti nongol&#39;, 1],
+ [&#39;2023-05-09T16:17:03Z&#39;,
+  &#39;Muhammad SAUU&#39;,
+  &#39;Marilah dukung channel TANPARAGI untuk pendidikan islam yang modern dan berfilosofi untuk kemajuan agama keluarga anda&#39;,
+  0],
+ [&#39;2023-05-09T16:16:54Z&#39;,
+  &#39;Muhammad SAUU&#39;,
+  &#39;Marilah dukung channel TANPARAGI untuk pendidikan islam yang modern dan berfilosofi untuk kemajuan agama keluarga anda&#39;,
+  0],
+ [&#39;2023-05-09T14:58:10Z&#39;,
+  &#39;@stvsurya09&#39;,
+  &#39;Cacing kena abu gosok pasti blingsatan boss 😅😅😅&#39;,
+  1],
+ [&#39;2023-05-09T14:49:18Z&#39;, &#39;Muhammad Idris Idris&#39;, &#39;Maju terus pak anies&#39;, 0],
+ [&#39;2023-05-09T14:47:44Z&#39;,
+  &#39;arthavy&#39;,
+  &#39;Duh produk gagal ko dipaksain ajah tuk jadi mimpin rakyat..kasar bed dah ah permainan politiknya lewat badut yg gagal memperbaiki Jakarta..pak Jokowi tak kan juga mau kalo program yg sudah berjalan dieranya rusak karena pemimpin yg pintar ngomong tok..harus pengganti pak Jokowi itu yg sejalan dalam nawacita negara..bukan produk karbitan gt&#39;,
+  2],
+ [&#39;2023-05-09T13:26:02Z&#39;,
+  &#39;goenawan dwi nugroho&#39;,
+  &#39;Chaplin sendiri endorse ONTA goblok asal duitnya balik 🎉🎉😮😮😅&lt;br&gt;Chaplin GOBLOK&#39;,
+  0],
+ [&#39;2023-05-09T12:29:30Z&#39;,
+  &#39;Septia Munanda&#39;,
+  &#39;Bisa ya pejabat publik sekaligus pejabat politik, ngeri ngeri, sama dgn pns pejabat publik jg pejabat politik, cara orba tp seolah anti orba..&#39;,
+  0],
+ [&#39;2023-05-09T12:19:03Z&#39;,
+  &#39;Fasos Griya Mandiri&#39;,
+  &#39;Ya Allah selamatkan NKRI daru rorongan yg akan merusak tatan nuswantoro, caplin  wan abud  adalah garong yg akan merampas hak rakyat.&#39;,
+  1],
+ [&#39;2023-05-09T11:59:45Z&#39;,
+  &#39;hioe nyuk Tjhin&#39;,
+  &#39;ANIES  segera ditangkap maling uang rakyet.dengan ini.tak ada masalah2 jg dingarang2 ANIES.&#39;,
+  0],
+ [&#39;2023-05-09T11:23:13Z&#39;,
+  &#39;Ahmad Sonhaji&#39;,
+  &#39;Gass  pak. Jokowiii jgn hiraukan 🎉🎉🎉&#39;,
+  1],
+ [&#39;2023-05-09T11:04:21Z&#39;,
+  &#39;Apriliansyah channel&#39;,
+  &#39;Anis mulai gelisah bentar lagi asam lambung naik&#39;,
+  2],
+ [&#39;2023-05-09T10:05:35Z&#39;,
+  &#39;Dodi Ruseno&#39;,
+  &#39;Jokowi katanyakan planga plongo, bebek lumpuh..... Masa takut sih.... 😅😅😅&#39;,
+  1],
+ [&#39;2023-05-09T10:03:18Z&#39;,
+  &#39;sza rut&#39;,
+  &#39;Anies pengen banget jadi presiden ya🤣🤣🤣&#39;,
+  0],
+ [&#39;2023-05-09T09:30:01Z&#39;,
+  &#39;ridwan dps&#39;,
+  &#39;Sicaplon harusnya juga tidak cawe cawe  karena dia mantan wapres 2 x&#39;,
+  1],
+ [&#39;2023-05-09T09:16:37Z&#39;,
+  &#39;Sri Budi Purwanto&#39;,
+  &#39;JK endorse anies dlm pilgub DKI ketika jadi wapres ...&#39;,
+  0],
+ [&#39;2023-05-09T09:09:35Z&#39;,
+  &#39;mohamad taofik&#39;,
+  &#39;seorang pemimpin itu seharusnya netraljgn menjawab pertanyaan yg sifat nya sensitif,gk perlulah sbut nama2 capres yg menurut nya cocok didepan publik,kunci rapat2 mulut utk jg ht smua rakyatnya jg etika&#39;,
+  0],
+ [&#39;2023-05-09T08:49:54Z&#39;,
+  &#39;joko gida&#39;,
+  &#39;Klu pak joko wi dianggap cawe cawe dan mencederai rakyat indonesia kata anis, lha sianus kampanye duluan apa ga mencederai rakyat bego kok dipelihara&#39;,
+  0],
+ [&#39;2023-05-09T08:40:24Z&#39;,
+  &#39;tai kucing rasa keju&#39;,
+  &#39;Harusnya emg gaboleh dong presiden bgtu&#39;,
+  0],
+ [&#39;2023-05-09T08:20:21Z&#39;,
+  &#39;Surya Darma&#39;,
+  &#39;! Menurut saya Pak ANies sangat berkualitas, saya dari Sumatera Semakin yakin untuk memilih beliau for RI 1 2024. Beliau merangkul semua golongan apalagi wong cilik. \r&lt;br&gt;Pesan Keren dari Pak Anies RB : \r&lt;br&gt;“Saya ingin garis bawahi pemilik kekuasaan di Republik ini adalah rakyat. Jadi ini tidak sedang berbicara tentang hilangnya kekuasaan atau pindahnya kekuasaan, karena kekuasaan tidak pernah pindah. Adanya yang berpindah dan berganti itu kewenangan dalam menjalankan kekuasaan” \r&lt;br&gt;“Jadi kalau ada yang merasa kekuasaan di tangan dirinya, maka dia sedang tidak menghargai prinsip-prinsip dasar dalam sebuah demokrasi, karena prinsip dasar demokrasi, kekuasaan ada di tangan rakyat.”&#39;,
+  2],
+ [&#39;2023-05-10T07:08:38Z&#39;,
+  &#39;ilham bobotoh&#39;,
+  &#39;BERKUALITAS KORUPSI NYA BRO NAMNYA AJA MUDTADIN YIHANES KADRUN 😂&#39;,
+  0],
+ [&#39;2023-05-10T03:28:44Z&#39;,
+  &#39;Effendi Marbun&#39;,
+  &#39;Anies itu hanya ngomongnya saja yg lancar. Tidak gugup. Tapi hasilnya kopong&#39;,
+  0],
+ [&#39;2023-05-10T02:47:20Z&#39;,
+  &#39;Hazu&#39;,
+  &#39;\u200b@zainal arifin anda cerdas tp kena korban hoax bisa jd bodoh 😂&#39;,
+  0],
+ [&#39;2023-05-09T22:50:09Z&#39;, &#39;Ir Irna&#39;, &#39;Itukan mnurut selera Anda,,,,&#39;, 0],
+ [&#39;2023-05-09T22:25:03Z&#39;,
+  &#39;zainal arifin&#39;,
+  &#39;\u200b@Benjamin P ijasah palsu🤣🤣🤣&#39;,
+  0],
+ [&#39;2023-05-09T08:12:32Z&#39;, &#39;Ngari Harsono&#39;, &#39;Ngeles to lagi mencla mincle&#39;, 0],
+ [&#39;2023-05-09T08:03:37Z&#39;,
+  &#39;Indonesia Maju&#39;,
+  &#39;Tidak ada yamg salah....Untuk kepentingan rakyat... Maju trus pak Jokowi...&lt;br&gt;JK saat jadi wapres dulu usulkan Anies Cagub...tidak ribut....&#39;,
+  1],
+ [&#39;2023-05-09T07:51:52Z&#39;, &#39;Budi Arifin&#39;, &#39;Maklumlah ijazahnya juga ?😂&#39;, 0],
+ [&#39;2023-05-09T12:02:08Z&#39;,
+  &#39;Budi Arifin&#39;,
+  &#39;@Ahmad Sonhaji masaknya kurang matang kali?😝&#39;,
+  1],
+ [&#39;2023-05-09T11:24:13Z&#39;, &#39;Ahmad Sonhaji&#39;, &#39;Basi&#39;, 1],
+ [&#39;2023-05-09T07:44:29Z&#39;,
+  &#39;Deni Aja&#39;,
+  &#39;Seharusnya nya... Yg menyarankan Pak Jokowi tidak ikut mendukung Capres tertentu yg dari indenpenden..... Kalau Pak JK sama saja punya calon masing masing Pak JK punya Calon juga Pak A.Ra.B  (  Anis Rasid Baswedan  ).&#39;,
+  1],
+ [&#39;2023-05-09T07:36:03Z&#39;,
+  &#39;Ydkhae Laab&#39;,
+  &#39;Orang yg takut kalah sll cari cari kesalahan lawan pdhal ga ada yg dilanggar. Rakyat Indonesi sdh pd tau SIAPA YG RAJA ALASAN Bicara muter2 bernarasi diruang hampa alias HALU AKUT PRAKTEK JAUH. Jangan Pilih Capres yg Suka Memutar balikkan Fakta. Tp Pilih Capres yg Mencerminkan Ke-Indonesiaan. Capres yg Jujur &amp;amp; Terbuka. Capres yg Rendah Hati &amp;amp; Dekat dg Rakyat. Capres yg dpt Merangkul &amp;amp; diterima SEMUA GOLONGAN. Rakyat Indonesia PASTI MEMILIH CAPRES YANG BAPAK KAKEK NENEKNYA &amp;amp; BUYUTNYA DARAH INDONESIA&lt;br&gt;( GANJAR PRANOWO RI-1 2024 ).&lt;br&gt;Aamiiin Ya Robbal &amp;#39;Alamiiin&#39;,
+  1],
+ [&#39;2023-05-09T07:31:54Z&#39;,
+  &#39;Heri Setyoko&#39;,
+  &#39;Kok bisa ya, sudah jelas-jelas begitu masih menyangkal juga ndak cawe2. Hebatnya presidenku dlm hal &amp;quot;nge-les&amp;quot;&#39;,
+  0],
+ [&#39;2023-05-09T14:29:20Z&#39;,
+  &#39;dodo widodo&#39;,
+  &#39;Guoblog, Presiden itu pembina dan pejabat politik, makanya ada MenkoPolHukam dibawahnya, paham&#39;,
+  0],
+ [&#39;2023-05-09T06:40:14Z&#39;, &#39;Musrini Aku&#39;, &#39;Paluh mumet kliru pilihanya.&#39;, 1],
+ [&#39;2023-05-09T06:22:03Z&#39;,
+  &#39;Dian Safrizal&#39;,
+  &#39;Takut y mereka..krj nyata Jokowi mangkanya di cintai rakyat..bkn merangkai kata hny untuk jabatan&#39;,
+  2],
+ [&#39;2023-05-09T09:46:33Z&#39;, &#39;Agus S Singa terbangun&#39;, &#39;Ll&#39;, 0],
+ [&#39;2023-05-09T09:46:16Z&#39;,
+  &#39;Agus S Singa terbangun&#39;,
+  &#39;USIR AGAMA TERORIS BAJINGAN YG RATUSAN TAHUN MEMBUNUH MENYIKSA MEMBANTAI MEMPERKOSA MERAMPOK KEKAYAAN NEGERI INI RATUSAN TAHUN DI BAWA KE NEGERI LELUHUR NYA MEREKA MEMBANGUN NEGARA DAN GEREJA MEWAH MEWAH HASIL NGERAMPOK DASAR BAJINGAN SAMPAI SEKARANG KATA MAHPUD BARU BERAPA TAHUN JADI MENTERI SUDAH LEBIH LIMA PULUH TNI DAN POLRI DI TEMBAK MATI OLEH TERORIS BAJINGAN KRISTEN BAHKAN JENERAL BINTANG SATU PUN DI TEMBAK MATI OLEH TERORIS BAJINGAN KRISTEN SIPIL LEBIH BANYAK LAGI BAHKAN A HARI LALU PESAWAT DI BAKAR PILOT DAN LIMA PENUMPANG BELUM KETAUAN DI BAWA KE MANA DAN DI A P AIN DASAR BAJINGAN BAHKAN BERAPA HARI LALU SEMBILAN PRAJURIT DI TEMBAK MATI OLEH TERORIS BAJINGAN KRISTEN DASAR AGAMA TERORIS  SEDANG ORMAS ISLAM DAN FPI SEJAK BERDIRI HINGGA KINI BELUM ADA YANG DI TEMBAK MATI OLEH ORMAS ISLAM DAN FPI TAPI DASAR AGAMA TERORIS BAJINGAN MALAH NGIPASIN APARAT UNTUK MEMBUBARKAN FPI DG ALASAN RADIKAL TERORIS OLEH BAJINGAN LUHUT LOLY SIGIT PADAHAL MEREKA BIANG NYA NI AGUS S SINGATERBANGUN KETUA SEKOLAH TINGGI ITA&#39;,
+  0],
+ [&#39;2023-05-09T06:13:46Z&#39;,
+  &#39;TheLirik&#39;,
+  &#39;Lebih baik kandidat lain daripada PETUGAS PARTAI yang selama menjabat terkenal lewat jalur viral. Anis di awal proyek sumur resapan nya di cemooh tapi warga nya malah senang tuh dengan adanya sumur resapan. Jadi sebuah prestasi bukan hanya karena modal sliweran di berita tanpa tau prestasi nya apa selain Petugas partai&#39;,
+  1],
+ [&#39;2023-05-09T06:03:21Z&#39;,
+  &#39;yg bilang pencitraan tu orang yg iri aja g&#39;,
+  &#39;Pinter bacot doang&#39;,
+  0],
+ [&#39;2023-05-09T06:03:14Z&#39;,
+  &#39;Rayhan Alganeyu&#39;,
+  &#39;Itulah nama nya pemimpin yg peduli dengan rakyat dan ingin melanjutkan kemajuan negara kita, hanya orang yg berpikir seperti itu adalah orang yg gak maju&#39;,
+  1],
+ [&#39;2023-05-09T22:42:45Z&#39;, &#39;Fa- Yudhie43&#39;, &#39;Kemajuan bapak kau salto...&#39;, 0],
+ [&#39;2023-05-09T06:59:56Z&#39;,
+  &#39;CITY TRAVELING&#39;,
+  &#39;ENTE PIKIR DULU PDIP GAK TERIAK2 SUPAYA SBY GAK ENDORSE2 CAPRES 2014??&#39;,
+  0],
+ [&#39;2023-05-09T06:02:40Z&#39;,
+  &#39;yg bilang pencitraan tu orang yg iri aja g&#39;,
+  &#39;Hak asasi gk usah iro loh paloh&#39;,
+  1],
+ [&#39;2023-05-09T05:49:33Z&#39;,
+  &#39;Jihad Mukhlisina W&#39;,
+  &#39;Pa anis untuk demokrasi lebih hidup presiden RI 1&#39;,
+  3],
+ [&#39;2023-05-09T22:18:51Z&#39;,
+  &#39;Mobile Game&#39;,
+  &#39;Patung di bundaran hi di buat dari bambu 😅&#39;,
+  0],
+ [&#39;2023-05-09T04:32:08Z&#39;,
+  &#39;dahlan yamsehu&#39;,
+  &#39;HAMA atau GULMA harus di bersihkan krna akan mengganggu jalannya pembangunan yg sdh sesuai reelnya&#39;,
+  2],
+ [&#39;2023-05-09T02:39:53Z&#39;,
+  &#39;don juan&#39;,
+  &#39;😂😂😂.... BOHIR WAN ABUD RESAH DAN GELISAH.... 😂😂😂😂&#39;,
+  4],
+ [&#39;2023-05-09T09:44:26Z&#39;, &#39;Agus S Singa terbangun&#39;, &#39;Ll&#39;, 0],
+ [&#39;2023-05-09T09:44:15Z&#39;,
+  &#39;Agus S Singa terbangun&#39;,
+  &#39;USIR AGAMA TERORIS BAJINGAN YG RATUSAN TAHUN MEMBUNUH MENYIKSA MEMBANTAI MEMPERKOSA MERAMPOK KEKAYAAN NEGERI INI RATUSAN TAHUN DI BAWA KE NEGERI LELUHUR NYA MEREKA MEMBANGUN NEGARA DAN GEREJA MEWAH MEWAH HASIL NGERAMPOK DASAR BAJINGAN SAMPAI SEKARANG KATA MAHPUD BARU BERAPA TAHUN JADI MENTERI SUDAH LEBIH LIMA PULUH TNI DAN POLRI DI TEMBAK MATI OLEH TERORIS BAJINGAN KRISTEN BAHKAN JENERAL BINTANG SATU PUN DI TEMBAK MATI OLEH TERORIS BAJINGAN KRISTEN BAHKAN JENERAL BINTANG SATU PUN DI TEMBAK MATI OLEH TERORIS BAJINGAN KRISTEN SIPIL LEBIH BANYAK LAGI BAHKAN A HARI LALU PESAWAT DI BAKAR PILOT DAN LIMA PENUMPANG BELUM KETAUAN DI BAWA KE MANA DAN DI A P AIN DASAR BAJINGAN  BAHKAN BERAPA HARI LALU SEMBILAN PRAJURIT DI TEMBAK MATI OLEH TERORIS BAJINGAN KRISTEN  DASAR AGAMA TERORIS BAJINGAN SEDANG ORMAS ISLAM DAN FPI SEJAK BERDIRI HINGGA KINI BELUM ADA YANG DI TEMBAK MATI OLEH ORMAS ISLAM DAN FPI TAPI DASAR AGAMA TERORIS BAJINGAN MALAH NGIPASIN APARAT UNTUK MEMBUBARKAN FPI DG ALASAN RADIKAL TERORIS OLEH BAJINGAN LUHUT LOLY SIGIT PADAHAL MEREKA BIANG NYA NI AGUS S SINGATERBANGUN KETUA SEKOLAH TINGGI ITA&#39;,
+  0],
+ [&#39;2023-05-09T02:19:30Z&#39;,
+  &#39;Indra Wijaya&#39;,
+  &#39;Ga heran siapa mereka pasukan sakit hati.&#39;,
+  3],
+ [&#39;2023-05-09T01:59:07Z&#39;,
+  &#39;Rosadi Nurdin&#39;,
+  &#39;Jk itu maksa anis capers ini orang rakus harta  , rakyat mana yg mau dukung lu jdi RI1  barang busuk mana laku&#39;,
+  0],
+ [&#39;2023-05-08T22:25:27Z&#39;, &#39;Imam Taufik&#39;, &#39;Kadruuuuuuun paniiiiik&#39;, 1],
+ [&#39;2023-05-09T09:49:29Z&#39;, &#39;Agus S Singa terbangun&#39;, &#39;Lll&#39;, 0],
+ [&#39;2023-05-09T09:49:13Z&#39;,
+  &#39;Agus S Singa terbangun&#39;,
+  &#39;KADRUN KADRUN LU GROMBOLAN AGAMA TERORIS BAJINGAN YG RATUSAN TAHUN MEMBUNUH MENYIKSA MEMBANTAI MEMPERKOSA MERAMPOK KEKAYAAN NEGERI INI RATUSAN TAHUN DI BAWA KE NEGERI LELUHUR NYA MEREKA MEMBANGUN NEGARA DAN GEREJA MEWAH MEWAH HASIL NGERAMPOK DASAR BAJINGAN SAMPAI SEKARANG KATA MAHPUD BARU BERAPA TAHUN JADI MENTERI SUDAH LEBIH LIMA PULUH TNI DAN POLRI DI TEMBAK MATI OLEH TERORIS BAJINGAN KRISTEN BAHKAN JENERAL BINTANG SATU PUN DI TEMBAK MATI OLEH TERORIS BAJINGAN KRISTEN SIPIL LEBIH BANYAK LAGI BAHKAN A HARI LALU PESAWAT DI BAKAR PILOT DAN LIMA PENUMPANG BELUM KETAUAN DI BAWA KE MANA DAN DI A P AIN  DASAR BAJINGAN BAHKAN BERAPA HARI LALU SEMBILAN PRAJURIT DI TEMBAK MATI OLEH TERORIS BAJINGAN KRISTEN  DASAR AGAMA TERORIS BAJINGAN  SEDANG ORMAS ISLAM DAN FPI SEJAK BERDIRI HINGGA KINI BELUM ADA YANG DI TEMBAK MATI OLEH ORMAS ISLAM DAN FPI TAPI DASAR AGAMA TERORIS BAJINGAN MALAH NGIPASIN APARAT UNTUK MEMBUBARKAN FPI DG ALASAN RADIKAL TERORIS OLEH BAJINGAN LUHUT LOLY SIGIT PADAHAL MEREKA BIANG NYA NI AGUS S SINGATERBANGUN KETUA SEKOLAH TINGGI ITA&#39;,
+  0],
+ [&#39;2023-05-08T22:22:08Z&#39;,
+  &#39;Setia Budi&#39;,
+  &#39;Anies jd RI1  bubar saja negara ini.&#39;,
+  1],
+ [&#39;2023-05-09T09:53:09Z&#39;, &#39;Agus S Singa terbangun&#39;, &#39;Ll&#39;, 0],
+ [&#39;2023-05-08T16:37:21Z&#39;,
+  &#39;Noni Noni&#39;,
+  &#39;partai cengeng dulu lo kemane aja waktu Prabowo tanding jd presiden lo kan di rezim itu yg byk curangnya&#39;,
+  0],
+ [&#39;2023-05-08T15:37:58Z&#39;, &#39;AM | CHANEL&#39;, &#39;Anis mantap..... RI 1👍👍&#39;, 3],
+ [&#39;2023-05-09T22:18:28Z&#39;, &#39;Mobile Game&#39;, &#39;DP 0%&#39;, 0],
+ [&#39;2023-05-08T13:51:06Z&#39;,
+  &#39;Just Opini&#39;,
+  &#39;Rekam jejak Anies yg. benar ada di DKI Jakarta Monas digunduli👍jalan mulus dilobangi buat sumur resapan👍kali item di kelambui👍tugu sepatu. Sepatu nya sebelah👍patung rotan 1 tahun dibongkar👍sebelum nya jadi .menteri di PECAT👍keren hebat👍itulah sebahagian bentuk PERESTASI Anies yg Ter BUKTI👍&#39;,
+  1],
+ [&#39;2023-05-09T09:59:16Z&#39;, &#39;Agus S Singa terbangun&#39;, &#39;@Kasun Kemiri ll&#39;, 0],
+ [&#39;2023-05-09T09:59:05Z&#39;,
+  &#39;Agus S Singa terbangun&#39;,
+  &#39;IYA MAU NYA AGAMA TERORIS KRISTEN YG JADI GUBERNUR DKI JAKARTA AGAMA TERORIS MAKA NYA SEMUA AGAMA TERORIS MILIH CAGUB AGAMA TERORIS KETIKA ORANG ISLAM NGAJAK ORANG ISLAM UNTUK MILIH CAGUB ISLAM MEREKA TREAKIN INTOLERAN DISKRIMINATIF RADIKAL RASIIISSS SAMPAI MONYONG CONGOR NYA ANJING AHOK AKAL BULUS NYA UNTUK NGERAMPOK KEPEMIMPINAN DI TENGAH UMMAT ISLAM LIHAT NTT BALI ITUKAN WILAYAH INDONESIA YANG MAYORITAS MUSLIM TAPI KARENA DI SANA MAYORITAS KAFIR ISLAM TAU DIRI TAU MALU DAN GAK BANGOR GAK MAU NYALON NYALON UNTUK MIMPIN DI SANA BEGITU KAFIR TERPILIH ORANG ISLAM LEGOWO GAK ADA YG TREAK TREAK NGATAIN ORANG KAFIR RASIISS RADIKAL TERORIS GAK ADA JADI AMAN KAN KALAU GROMBOLAN AGAMA TERORIS BAJINGAN TAU DIRI TAU MALU DAN GAK BANGOR PILKADA DKI GAK SERUET SAAT ITU JELAS NYA DI TENGAH MAYORITAS KAFIR KAFIR YG MIMPIN ISLAM LEGOWO BEGITU JUGA SEBALIKNYA DI TENGAH MAYORITAS MUSLIM KAFIR JANGAN BERSYAHWAT JUGA MAU MIMPIN MONYET BUANG LAH SYAHWAT PADA TEMPAT NYA LAGIAN ORANG LAIN JUGA MAUUUKKK KALIIIKKK EMANGE GROMBOLAN AGAMA TERORIS BAJINGAN DOANGAN YG PENGEN NI AGUS S SINGATERBANGUN KETUA SEKOLAH TINGGI ITA DASAR AGAMA TERORIS BAJINGAN YG RATUSAN TAHUN MEMBUNUH MENYIKSA MEMBANTAI MEMPERKOSA MERAMPOK KEKAYAAN NEGERI INI RATUSAN TAHUN DI BAWA KE NEGERI LELUHUR NYA MEREKA MEMBANGUN NEGARA DAN GEREJA MEWAH MEWAH HASIL NGERAMPOK DASAR BAJINGAN SAMPAI SEKARANG KATA MAHPUD BARU BERAPA TAHUN JADI MENTERI SUDAH LEBIH LIMA PULUH TNI DAN POLRI DI TEMBAK MATI OLEH TERORIS BAJINGAN KRISTEN BAHKAN JENERAL BINTANG SATU PUN DI TEMBAK MATI OLEH TERORIS BAJINGAN KRISTEN BAHKAN JENERAL BINTANG SATU PUN DI TEMBAK MATI OLEH TERORIS BAJINGAN KRISTEN SIPIL LEBIH BANYAK LAGI BAHKAN A HARI LALU PESAWAT DI BAKAR PILOT DAN LIMA PENUMPANG BELUM KETAUAN DI BAWA KE MANA DAN DI A P AIN DASAR BAJINGAN  BAHKAN BERAPA HARI LALU SEMBILAN PRAJURIT DI TEMBAK MATI OLEH TERORIS BAJINGAN KRISTEN DASAR AGAMA TERORIS BAJINGAN  SEDANG ORMAS ISLAM DAN FPI SEJAK BERDIRI HINGGA KINI BELUM ADA YANG DI TEMBAK MATI OLEH ORMAS ISLAM DAN FPI TAPI DASAR AGAMA TERORIS BAJINGAN MALAH NGIPASIN APARAT UNTUK MEMBUBARKAN FPI DG ALASAN RADIKAL TERORIS OLEH BAJINGAN LUHUT LOLY SIGIT PADAHAL MEREKA BIANG NYA NI AGUS S SINGATERBANGUN KETUA SEKOLAH TINGGI ITA&#39;,
+  0],
+ [&#39;2023-05-09T02:10:58Z&#39;,
+  &#39;Kasun Kemiri&#39;,
+  &#39;visi misi gak penting yang penting rekam jejak dan kerja nysta  wwlaupun cuma buatcpatung sepatu&#39;,
+  0],
+ [&#39;2023-05-08T12:21:40Z&#39;,
+  &#39;Ayu Wandira&#39;,
+  &#39;Pak jokowi tetap idola ku.. 2024  prabowo presiden ku❤❤&#39;,
+  2],
+ [&#39;2023-05-09T09:27:38Z&#39;, &#39;widi aja&#39;, &#39;mantap prabowo president 2024&#39;, 1],
+ [&#39;2023-05-09T05:48:49Z&#39;, &#39;Jihad Mukhlisina W&#39;, &#39;Mana saya tau&#39;, 1],
+ [&#39;2023-05-08T11:36:37Z&#39;,
+  &#39;amru pane&#39;,
+  &#39;Anis ingin dibuat breowok  dan Caplin menjadi boneka, agar bisnis mereka meraja Lela. Sama sama dari Golkar&#39;,
+  0],
+ [&#39;2023-05-08T10:52:43Z&#39;,
+  &#39;Kabul Kajate&#39;,
+  &#39;Proyek gorong2 dan formula e harus di usut tuntas&#39;,
+  1],
+ [&#39;2023-05-08T09:38:57Z&#39;,
+  &#39;Muhammad Arsyad Arsyad&#39;,
+  &#39;Cewe cawe jok ,dsr presdn ta becus iris negara aja gagal mau atur pemilu ha ha ha&#39;,
+  2],
+ [&#39;2023-05-09T10:29:28Z&#39;,
+  &#39;SUGAN DI&#39;,
+  &#39;Kalaupun dukungan bos si anis menang?Belum tentu si bos dijadikan pejabat nya si anis?&#39;,
+  0],
+ [&#39;2023-05-09T10:27:04Z&#39;,
+  &#39;SUGAN DI&#39;,
+  &#39;Kurang lebihnya 3 minggu berlalu lebaran?Sekarang udah bikin lagi dosa ?Bos bos?&#39;,
+  0],
+ [&#39;2023-05-09T10:21:03Z&#39;,
+  &#39;SUGAN DI&#39;,
+  &#39;Bilang jokowi gabecus?Apalagi bos mungkin gabecus?Kanau niat dukung si anis silahkan bos?Asal jangan pitnah sanah pitnah sinih ya bos?Insa alloh alloh gabakalan mema ap kon orang pemitnah kalau yang di pitnah nya ga mema ap kan nya?&#39;,
+  0],
+ [&#39;2023-05-09T10:17:39Z&#39;, &#39;Mgs&#39;, &#39;Kadrun klo komen gk logis...&#39;, 0],
+ [&#39;2023-05-09T10:12:13Z&#39;, &#39;Agus S Singa terbangun&#39;, &#39;Ll&#39;, 0],
+ [&#39;2023-05-08T09:29:34Z&#39;,
+  &#39;Marsitin Fnu&#39;,
+  &#39;Emang ada Masalah..sama lu Caplin ,dajal n WAN ONTA...itu haknya presiden&#39;,
+  0],
+ [&#39;2023-05-08T09:14:37Z&#39;,
+  &#39;Candra Yana&#39;,
+  &#39;KOK BISA FIR&amp;#39;AUN TAKUT AMA ANIES ??.?? 😂😂&#39;,
+  0],
+ [&#39;2023-05-09T11:48:29Z&#39;,
+  &#39;Bambang Soetrisno&#39;,
+  &#39;&lt;a href=&quot;https://www.youtube.com/watch?v=lcpdHr51a2s&amp;amp;t=2m23s&quot;&gt;2:23&lt;/a&gt;&#39;,
+  0],
+ [&#39;2023-05-09T10:09:01Z&#39;, &#39;Agus S Singa terbangun&#39;, &#39;@Ivone Sarak ll&#39;, 0],
+ [&#39;2023-05-09T10:08:48Z&#39;,
+  &#39;Agus S Singa terbangun&#39;,
+  &#39;@Irwan Irwan DASAR AGAMA TERORIS SUDAH JELAS ANIS MUSLIM EE PAKE DI KASIH KASIH NAMA YOHANES BIAR JADI TERORIS SEPERTI KRISTEN YG RATUSAN TAHUN MEMBUNUH MENYIKSA MEMBANTAI MEMPERKOSA MERAMPOK KEKAYAAN NEGERI INI RATUSAN TAHUN DI BAWA KE NEGERI LELUHUR NYA MEREKA MEMBANGUN NEGARA DAN GEREJA MEWAH MEWAH HASIL NGERAMPOK DASAR BAJINGAN SAMPAI SEKARANG KATA MAHPUD BARU BERAPA TAHUN JADI MENTERI SUDAH LEBIH LIMA PULUH TNI DAN POLRI DI TEMBAK MATI OLEH TERORIS BAJINGAN KRISTEN BAHKAN JENERAL BINTANG SATU PUN DI TEMBAK MATI OLEH TERORIS BAJINGAN KRISTEN SIPIL LEBIH BANYAK LAGI BAHKAN A HARI LALU PESAWAT DI BAKAR PILOT DAN LIMA PENUMPANG BELUM KETAUAN DI BAWA KE MANA DAN DI A P AIN DASAR BAJINGAN BAHKAN BERAPA HARI LALU SEMBILAN PRAJURIT DI TEMBAK MATI OLEH TERORIS BAJINGAN KRISTEN  DASAR AGAMA TERORIS BAJINGAN  SEDANG ORMAS ISLAM DAN FPI SEJAK BERDIRI HINGGA KINI BELUM ADA YANG DI TEMBAK MATI OLEH ORMAS ISLAM DAN FPI TAPI DASAR AGAMA TERORIS BAJINGAN MALAH NGIPASIN APARAT UNTUK MEMBUBARKAN FPI DG ALASAN RADIKAL TERORIS OLEH BAJINGAN LUHUT LOLY SIGIT PADAHAL MEREKA BIANG NYA NI AGUS S SINGATERBANGUN KETUA SEKOLAH TINGGI ITA&#39;,
+  0],
+ [&#39;2023-05-09T10:06:54Z&#39;, &#39;Agus S Singa terbangun&#39;, &#39;@Ivone Sarak lll&#39;, 0],
+ [&#39;2023-05-09T10:06:43Z&#39;, &#39;Agus S Singa terbangun&#39;, &#39;@Candra Yana lll&#39;, 0],
+ [&#39;2023-05-08T09:12:56Z&#39;,
+  &quot;Ni&#39;matul Maula&quot;,
+  &#39;&lt;b&gt;para bohir Nisnis panik boneka mereka nyungsep... 😀😁😂.&lt;/b&gt;&#39;,
+  0],
+ [&#39;2023-05-08T09:11:37Z&#39;, &#39;Masni IBRAHIM AL-JAWDAH&#39;, &#39;Ngawur&#39;, 0],
+ [&#39;2023-05-08T08:59:18Z&#39;,
+  &#39;Bang beta&#39;,
+  &#39;Yoh &lt;a href=&quot;https://www.youtube.com/watch?v=lcpdHr51a2s&amp;amp;t=6m53s&quot;&gt;6:53&lt;/a&gt; Maka kata Yesus kepada mereka: &amp;quot;Aku berkata kepadamu, sesungguhnya jikalau&lt;br&gt;kamu tidak &lt;b&gt;makan daging Anak&lt;/b&gt; &lt;b&gt;Manusia dan minum darah-Nya,&lt;/b&gt; kamu tidak mempunyai&lt;br&gt;hidup di dalam dirimu.&lt;br&gt;&lt;br&gt;Katanya tuhan 🤔&lt;br&gt;Tuhan kok omongan nya mirip suku kanibal ini yg bicara tuhan apa kepala suku kanibal apa Zombie 🧟🧟 🤣😂🤣😂🤣😂&lt;br&gt;Masa tuhan bisa bilang &lt;br&gt;&lt;b&gt;makan daging Anak&lt;/b&gt; &lt;b&gt;Manusia dan minum darah-Nya,&lt;/b&gt; 😵\u200d💫&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;Ketika keluarga-Nya mendengar hal ini, mereka datang untuk mengambil Yesus sebab orang-orang berkata, “Dia sudah tidak waras.”(Markus &lt;a href=&quot;https://www.youtube.com/watch?v=lcpdHr51a2s&amp;amp;t=3m21s&quot;&gt;3:21&lt;/a&gt;) 😵\u200d💫&lt;br&gt;&lt;br&gt;&lt;b&gt;Terbukti si gila mati menjadi zombie&lt;/b&gt; 🧟&lt;br&gt;LUKAS 24:7 bahwa &amp;#39;Anak Manusia harus diserahkan kepada orang berdosa, lalu disalibkan,&lt;br&gt;dan pada hari yang ketiga Ia akan bangkit.&amp;#39;&amp;quot;&lt;br&gt;&lt;br&gt;mayat bangkit=zombie 🧟&lt;br&gt;🤣😂&lt;br&gt;&lt;br&gt;&lt;b&gt;Disuruh sang rasul nyembah2&lt;/b&gt; &lt;b&gt;zombie&lt;/b&gt;&lt;br&gt;Roma 10:9&lt;br&gt;Ayat 9. Sebab jika kamu mengaku dengan mulutmu, bahwa Yesus adalah Tuhan( &lt;b&gt;disuruh nyembah mayat&lt;/b&gt; &lt;b&gt;bangkit/zombie&lt;/b&gt; ) dan percaya dalam hatimu, bahwa Allah telah &lt;b&gt;membangkitkan Dia dari antara&lt;/b&gt; &lt;b&gt;orang mati,&lt;/b&gt; maka kamu akan diselamatkan.&lt;br&gt;&lt;br&gt;&lt;b&gt;ajaran apa ini Percaya sama perZombian diselamatkan&lt;/b&gt;&lt;br&gt;Diselamatkan dari apa?&lt;br&gt;Dari azab kubur apa siksa neraka 🤔&lt;br&gt;Ga jelas &lt;br&gt;🤣😂🤣😂😂👏👏👏👏&lt;br&gt;Roma 10 Ayat 10&lt;br&gt;Karena dengan hati orang percaya dan dibenarkan, dan dengan mulut orang mengaku dan &lt;b&gt;diselamatkan.&lt;/b&gt;&lt;br&gt;&lt;br&gt;Diselamatkan dari apa sih kok ga jelas &lt;br&gt;Ajaran ga jelas&lt;br&gt;Bicara kesana kemari diselamatkan &lt;br&gt;Diselamatkan dari apa kok ga jelas &lt;br&gt;Intinya Disuruh percaya perZombian diselamatkan tp diselamatkan dari apa ga dijelaskan &lt;br&gt;😵\u200d💫😵\u200d💫😵\u200d💫😵\u200d💫😵\u200d💫😵\u200d💫😵\u200d💫😵\u200d💫😵\u200d💫😵\u200d💫😵\u200d💫😵\u200d💫😵\u200d💫😵\u200d💫😵\u200d💫😵\u200d💫😵\u200d💫😵\u200d💫😵\u200d💫😵\u200d💫😵\u200d💫🤣&lt;br&gt;….&lt;br&gt;🤸🏿⛅🤸🏿⛅🤸🏿⛅🤸🏿&#39;,
+  0],
+ [&#39;2023-05-10T08:50:40Z&#39;,
+  &#39;Taufik Hasan&#39;,
+  &#39;Lagian ngapain Hotbah disini,,, ngawur aja,,,😴😴😴&#39;,
+  0],
+ [&#39;2023-05-09T23:17:26Z&#39;,
+  &#39;Agus Guntur&#39;,
+  &#39;Aneh nya Yesus sblm JD tuhan dia sklh dlu..😀😀.brti lebih pintar gurunya dong.&#39;,
+  1],
+ [&#39;2023-05-09T14:42:19Z&#39;,
+  &quot;Muhamad satim Da&#39;wa&quot;,
+  &#39;Beritakan jg dgn ayat ini dlm buku bibel yehezkiel &lt;a href=&quot;https://www.youtube.com/watch?v=lcpdHr51a2s&amp;amp;t=16m26s&quot;&gt;16:26&lt;/a&gt; engkau bersundal/bersetubuh/ngentot dengan tetangga mu org mesir si aurat besar itu&#39;,
+  0],
+ [&#39;2023-05-09T10:04:15Z&#39;, &#39;Agus S Singa terbangun&#39;, &#39;Lll&#39;, 0],
+ [&#39;2023-05-09T10:03:51Z&#39;,
+  &#39;Agus S Singa terbangun&#39;,
+  &#39;NAMA NYA AJA AGAMA TERORIS BAJINGAN YG RATUSAN TAHUN MEMBUNUH MENYIKSA MEMBANTAI MEMPERKOSA MERAMPOK KEKAYAAN NEGERI INI RATUSAN TAHUN DI BAWA KE NEGERI LELUHUR NYA MEREKA MEMBANGUN NEGARA DAN GEREJA MEWAH MEWAH HASIL NGERAMPOK DASAR BAJINGAN SAMPAI SEKARANG KATA MAHPUD BARU BERAPA TAHUN JADI MENTERI SUDAH LEBIH LIMA PULUH TNI DAN POLRI DI TEMBAK MATI OLEH TERORIS BAJINGAN KRISTEN BAHKAN JENERAL BINTANG SATU PUN DI TEMBAK MATI OLEH TERORIS BAJINGAN KRISTEN BAHKAN JENERAL BINTANG SATU PUN DI TEMBAK MATI OLEH TERORIS BAJINGAN KRISTEN  SIPIL LEBIH BANYAK LAGI BAHKAN GA HARI LALU PESAWAT DI BAKAR PILOT DAN LIMA PENUMPANG BELUM KETAUAN DI BAWA KE MANA DAN DI A P AIN DASAR BAJINGAN BAHKAN BERAPA HARI LALU SEMBILAN PRAJURIT DI TEMBAK MATI OLEH TERORIS BAJINGAN KRISTEN  DASAR ZOMBI SEDANG ORMAS ISLAM DAN FPI SEJAK BERDIRI HINGGA KINI BELUM ADA YANG DI TEMBAK MATI OLEH ORMAS ISLAM DAN FPI TAPI DASAR AGAMA TERORIS BAJINGAN MALAH NGIPASIN APARAT UNTUK MEMBUBARKAN FPI DG ALASAN RADIKAL TERORIS OLEH BAJINGAN LUHUT LOLY SIGIT PADAHAL MEREKA BIANG NYA NI AGUS S SINGATERBANGUN KETUA SEKOLAH TINGGI ITA&#39;,
+  0],
+ [&#39;2023-05-08T08:52:27Z&#39;,
+  &#39;vertikal cell&#39;,
+  &#39;biiasanya calon yg suka saling serang orang lain itu jla tk akan jadi&#39;,
+  0],
+ [&#39;2023-05-08T09:56:55Z&#39;,
+  &#39;SUGAN DI&#39;,
+  &#39;Kalau calon ga serang menyerang?yang kepanasan pendukung bos yaman?&#39;,
+  0]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#menjadikan dataframe</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">comments</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;publishedAt&#39;</span><span class="p">,</span> <span class="s1">&#39;authorDisplayName&#39;</span><span class="p">,</span> <span class="s1">&#39;text&#39;</span><span class="p">,</span> <span class="s1">&#39;likeCount&#39;</span><span class="p">])</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-8aee3e62-6b72-4980-9df0-91cfff813f45">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>publishedAt</th>
+      <th>authorDisplayName</th>
+      <th>text</th>
+      <th>likeCount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2023-05-10T12:08:32Z</td>
+      <td>Putra Putri</td>
+      <td>Ora pengaruh bro,,bah jokowi endorse bah cawe ...</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2023-05-10T08:55:05Z</td>
+      <td>Taufik Hasan</td>
+      <td>Jelas dong JK &amp;amp; Paloh ketar ketir,, kalau ...</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2023-05-10T08:04:32Z</td>
+      <td>a vian</td>
+      <td>jusufkala anda itu orqngtua loh</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2023-05-10T07:12:57Z</td>
+      <td>ilham bobotoh</td>
+      <td>MURTAD YOHANES BUNGLON  PENGHIANAT BANGSA CAPR...</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2023-05-10T07:12:25Z</td>
+      <td>ilham bobotoh</td>
+      <td>MURTAD YOHANES BINGLON TAKUT KALAH MAKANYA DIA...</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>102</th>
+      <td>2023-05-09T14:42:19Z</td>
+      <td>Muhamad satim Da'wa</td>
+      <td>Beritakan jg dgn ayat ini dlm buku bibel yehez...</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>103</th>
+      <td>2023-05-09T10:04:15Z</td>
+      <td>Agus S Singa terbangun</td>
+      <td>Lll</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>104</th>
+      <td>2023-05-09T10:03:51Z</td>
+      <td>Agus S Singa terbangun</td>
+      <td>NAMA NYA AJA AGAMA TERORIS BAJINGAN YG RATUSAN...</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>105</th>
+      <td>2023-05-08T08:52:27Z</td>
+      <td>vertikal cell</td>
+      <td>biiasanya calon yg suka saling serang orang la...</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>106</th>
+      <td>2023-05-08T09:56:55Z</td>
+      <td>SUGAN DI</td>
+      <td>Kalau calon ga serang menyerang?yang kepanasan...</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>107 rows × 4 columns</p>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-8aee3e62-6b72-4980-9df0-91cfff813f45')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+        
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+      
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-8aee3e62-6b72-4980-9df0-91cfff813f45 button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-8aee3e62-6b72-4980-9df0-91cfff813f45');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+  </div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">drive</span><span class="o">/</span><span class="n">MyDrive</span><span class="o">/</span><span class="n">prosaindata</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/content/drive/MyDrive/prosaindata
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;capres2024.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="preprocessing">
+<h2>Preprocessing<a class="headerlink" href="#preprocessing" title="Permalink to this heading">#</a></h2>
+<div class="section" id="symbol-punctuation-removal-case-folding">
+<h3>1. Symbol &amp; Punctuation Removal, case folding<a class="headerlink" href="#symbol-punctuation-removal-case-folding" title="Permalink to this heading">#</a></h3>
+<p>Pada Tahap ini preprocessing yang dilakukan yaitu menghilangkan simbol dan tanda baca, serta melakukan case folding yaitu merubah seluruh huruf yang ada pada data menjadi huruf kecil</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#proses menghilangkan simbol dan emoji</span>
+<span class="k">def</span> <span class="nf">remove_text_special</span> <span class="p">(</span><span class="n">text</span><span class="p">):</span>
+  <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">t&#39;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">n&#39;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">u&#39;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">&#39;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+  <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">,</span> <span class="s1">&#39;replace&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;http://&quot;</span><span class="p">,</span><span class="s2">&quot; &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;https://&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">remove_text_special</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0      Ora pengaruh bro,,bah jokowi endorse bah cawe ...
+1      Jelas dong JK &amp;amp; Paloh ketar ketir,, kalau ...
+2                        jusufkala anda itu orqngtua loh
+3      MURTAD YOHANES BUNGLON  PENGHIANAT BANGSA CAPR...
+4      MURTAD YOHANES BINGLON TAKUT KALAH MAKANYA DIA...
+                             ...                        
+102    Beritakan jg dgn ayat ini dlm buku bibel yehez...
+103                                                  Lll
+104    NAMA NYA AJA AGAMA TERORIS BAJINGAN YG RATUSAN...
+105    biiasanya calon yg suka saling serang orang la...
+106    Kalau calon ga serang menyerang?yang kepanasan...
+Name: text, Length: 107, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#menghilangkan tanda baca</span>
+<span class="k">def</span> <span class="nf">remove_tanda_baca</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+  <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;(@[A-Za-z0-9]+)|([^0-9A-Za-z </span><span class="se">\t</span><span class="s2">])|(\w+:\/\/\S+)&quot;</span><span class="p">,</span><span class="s2">&quot; &quot;</span><span class="p">,</span><span class="n">text</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">text</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">remove_tanda_baca</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     Ora pengaruh bro  bah jokowi endorse bah cawe ...
+1     Jelas dong JK  amp  Paloh ketar ketir   kalau ...
+2                       jusufkala anda itu orqngtua loh
+3     MURTAD YOHANES BUNGLON  PENGHIANAT BANGSA CAPR...
+4     MURTAD YOHANES BINGLON TAKUT KALAH MAKANYA DIA...
+5     JK ITU PENGHIANAT BANGSA SI BUNGLON DARI YAMAN...
+6                         Barangkali ada modal yg masuk
+7                  Saya tidak pro Jokowi dari awal yaa 
+8     Semua ingin jadi presiden  meskipun Tdk jadi p...
+9     Biarlah urusan politik jgn di kaitkan dg agama...
+10    Kumis tipis masih belum puas karena pa di era ...
+11     Si caplin jk ketar ketir  Maju terus pak jokowi 
+12     Jokowi  petugas partai bukan negarawan sejati   
+13                             rekam jejak Anis benar  
+14              Awas JK udh terpilih cmn duduk di kursi
+15                Chaplin nih tiap pilpres pasti nongol
+16    Marilah dukung channel TANPARAGI untuk pendidi...
+17    Marilah dukung channel TANPARAGI untuk pendidi...
+18      Cacing kena abu gosok pasti blingsatan boss    
+19                                 Maju terus pak anies
+Name: text, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#proses menghilangkan angka</span>
+<span class="k">def</span> <span class="nf">remove_numbers</span> <span class="p">(</span><span class="n">text</span><span class="p">):</span>
+  <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\d+&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">remove_numbers</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0      Ora pengaruh bro  bah jokowi endorse bah cawe ...
+1      Jelas dong JK  amp  Paloh ketar ketir   kalau ...
+2                        jusufkala anda itu orqngtua loh
+3      MURTAD YOHANES BUNGLON  PENGHIANAT BANGSA CAPR...
+4      MURTAD YOHANES BINGLON TAKUT KALAH MAKANYA DIA...
+                             ...                        
+102    Beritakan jg dgn ayat ini dlm buku bibel yehez...
+103                                                  Lll
+104    NAMA NYA AJA AGAMA TERORIS BAJINGAN YG RATUSAN...
+105    biiasanya calon yg suka saling serang orang la...
+106    Kalau calon ga serang menyerang yang kepanasan...
+Name: text, Length: 107, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># proses casefolding</span>
+<span class="k">def</span> <span class="nf">casefolding</span><span class="p">(</span><span class="n">Comment</span><span class="p">):</span>
+  <span class="n">Comment</span> <span class="o">=</span> <span class="n">Comment</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+  <span class="k">return</span> <span class="n">Comment</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">casefolding</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0      ora pengaruh bro  bah jokowi endorse bah cawe ...
+1      jelas dong jk  amp  paloh ketar ketir   kalau ...
+2                        jusufkala anda itu orqngtua loh
+3      murtad yohanes bunglon  penghianat bangsa capr...
+4      murtad yohanes binglon takut kalah makanya dia...
+                             ...                        
+102    beritakan jg dgn ayat ini dlm buku bibel yehez...
+103                                                  lll
+104    nama nya aja agama teroris bajingan yg ratusan...
+105    biiasanya calon yg suka saling serang orang la...
+106    kalau calon ga serang menyerang yang kepanasan...
+Name: text, Length: 107, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="tokenizing">
+<h3>2. Tokenizing<a class="headerlink" href="#tokenizing" title="Permalink to this heading">#</a></h3>
+<p>Pada tahap ini preprocessing yang dilakukan adalah tokenizing. Tokenizing adalah metode untuk melakukan pemisahan kata dalam suatu kalimat dengan tujuan untuk proses analisis teks lebih lanjut</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#proses tokenisasi</span>
+<span class="c1"># from nltk.tokenize import TweetTokenizer</span>
+<span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;punkt&#39;</span><span class="p">)</span>
+<span class="c1"># def word_tokenize(text):</span>
+<span class="c1">#   tokenizer = TweetTokenizer(preserve_case=False, strip_handles=True, reduce_len=True)</span>
+<span class="c1">#   return tokenizer.tokenize(text)</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;review_token&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">sentence</span><span class="p">:</span> <span class="n">nltk</span><span class="o">.</span><span class="n">word_tokenize</span><span class="p">(</span><span class="n">sentence</span><span class="p">))</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;review_token&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package punkt to /root/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0      [ora, pengaruh, bro, bah, jokowi, endorse, bah...
+1      [jelas, dong, jk, amp, paloh, ketar, ketir, ka...
+2                  [jusufkala, anda, itu, orqngtua, loh]
+3      [murtad, yohanes, bunglon, penghianat, bangsa,...
+4      [murtad, yohanes, binglon, takut, kalah, makan...
+                             ...                        
+102    [beritakan, jg, dgn, ayat, ini, dlm, buku, bib...
+103                                                [lll]
+104    [nama, nya, aja, agama, teroris, bajingan, yg,...
+105    [biiasanya, calon, yg, suka, saling, serang, o...
+106    [kalau, calon, ga, serang, menyerang, yang, ke...
+Name: review_token, Length: 107, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">drive</span><span class="o">/</span><span class="n">MyDrive</span><span class="o">/</span><span class="n">prosaindata</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/content/drive/MyDrive/prosaindata
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;review_token&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;normalisasidata.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="word-normalization">
+<h3>3. Word Normalization<a class="headerlink" href="#word-normalization" title="Permalink to this heading">#</a></h3>
+<p>Pada tahap ini yang dilakukan yaitu normalisasi pada data. Hal tersebut dilakukan untuk merubah kata yang tidak baku menjadi kata baku</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Normalisasi kata tidak baku</span>
+<span class="n">normalize</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/content/drive/MyDrive/prosaindata/normalisasidata.csv&quot;</span><span class="p">)</span>
+
+<span class="n">normalize_word_dict</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">normalize</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+  <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">normalize_word_dict</span><span class="p">:</span>
+    <span class="n">normalize_word_dict</span><span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">normalized_term</span><span class="p">(</span><span class="n">comment</span><span class="p">):</span>
+  <span class="k">return</span> <span class="p">[</span><span class="n">normalize_word_dict</span><span class="p">[</span><span class="n">term</span><span class="p">]</span> <span class="k">if</span> <span class="n">term</span> <span class="ow">in</span> <span class="n">normalize_word_dict</span> <span class="k">else</span> <span class="n">term</span> <span class="k">for</span> <span class="n">term</span> <span class="ow">in</span> <span class="n">comment</span><span class="p">]</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;comment_normalize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;review_token&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">normalized_term</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;comment_normalize&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     [ora, pengaruh, bro, bah, jokowi, endorse, bah...
+1     [jelas, dong, jk, amp, paloh, ketar, ketir, ka...
+2                 [jusufkala, anda, itu, orqngtua, loh]
+3     [murtad, yohanes, bunglon, penghianat, bangsa,...
+4     [murtad, yohanes, binglon, takut, kalah, makan...
+5     [jk, itu, penghianat, bangsa, si, bunglon, dar...
+6                   [barangkali, ada, modal, yg, masuk]
+7           [saya, tidak, pro, jokowi, dari, awal, yaa]
+8     [semua, ingin, jadi, presiden, meskipun, tdk, ...
+9     [biarlah, urusan, politik, jgn, di, kaitkan, d...
+10    [kumis, tipis, masih, belum, puas, karena, pa,...
+11    [si, caplin, jk, ketar, ketir, maju, terus, pa...
+12    [jokowi, petugas, partai, bukan, negarawan, se...
+13                          [rekam, jejak, anis, benar]
+14     [awas, jk, udh, terpilih, cmn, duduk, di, kursi]
+15         [chaplin, nih, tiap, pilpres, pasti, nongol]
+16    [marilah, dukung, channel, tanparagi, untuk, p...
+17    [marilah, dukung, channel, tanparagi, untuk, p...
+18    [cacing, kena, abu, gosok, pasti, blingsatan, ...
+19                            [maju, terus, pak, anies]
+Name: comment_normalize, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="stopwords-removal">
+<h3>4. Stopwords Removal<a class="headerlink" href="#stopwords-removal" title="Permalink to this heading">#</a></h3>
+<p>Pada tahap ini preprocessing yang dilakukan adalah menghilangkan kata yang tidak penting. Stopwords removal dilakukan 2 kali, yang pertama berdasarkan korpus yang ada di library python yaitu nltk, yang kedua berdasarkan file ‘list_stopwords’</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Stopword Removal</span>
+<span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;stopwords&#39;</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span>
+<span class="n">txt_stopwords</span> <span class="o">=</span> <span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">&#39;indonesian&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">stopwords_removal</span><span class="p">(</span><span class="n">filtering</span><span class="p">)</span> <span class="p">:</span>
+  <span class="n">filtering</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">filtering</span> <span class="k">if</span> <span class="n">word</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">txt_stopwords</span><span class="p">]</span>
+  <span class="k">return</span> <span class="n">filtering</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;stopwords_removal&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;comment_normalize&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">stopwords_removal</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;stopwords_removal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package stopwords to /root/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     [ora, pengaruh, bro, bah, jokowi, endorse, bah...
+1     [jk, amp, paloh, ketar, ketir, sampe, anis, ka...
+2                            [jusufkala, orqngtua, loh]
+3     [murtad, yohanes, bunglon, penghianat, bangsa,...
+4     [murtad, yohanes, binglon, takut, kalah, takut...
+5     [jk, penghianat, bangsa, si, bunglon, yaman, s...
+6                        [barangkali, modal, yg, masuk]
+7                                    [pro, jokowi, yaa]
+8     [presiden, tdk, presiden, negara, presiden, ru...
+9     [biarlah, urusan, politik, jgn, kaitkan, dg, a...
+10    [kumis, tipis, puas, pa, era, jokowi, bisnis, ...
+11         [si, caplin, jk, ketar, ketir, maju, jokowi]
+12         [jokowi, petugas, partai, negarawan, sejati]
+13                                 [rekam, jejak, anis]
+14         [awas, jk, udh, terpilih, cmn, duduk, kursi]
+15                      [chaplin, nih, pilpres, nongol]
+16    [marilah, dukung, channel, tanparagi, pendidik...
+17    [marilah, dukung, channel, tanparagi, pendidik...
+18         [cacing, kena, abu, gosok, blingsatan, boss]
+19                                        [maju, anies]
+Name: stopwords_removal, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">drive</span><span class="o">/</span><span class="n">MyDrive</span><span class="o">/</span><span class="n">prosaindata</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/content/drive/MyDrive/prosaindata
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;stopwords_removal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;stopwords1.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#stopword removal 2</span>
+<span class="n">data_stopwords</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/content/drive/MyDrive/prosaindata/stopwords1.csv&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data_stopwords</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">stopwords_removal2</span><span class="p">(</span><span class="nb">filter</span><span class="p">)</span> <span class="p">:</span>
+  <span class="nb">filter</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="nb">filter</span> <span class="k">if</span> <span class="n">word</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">data_stopwords</span><span class="p">]</span>
+  <span class="k">return</span> <span class="nb">filter</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;stopwords_removal_final&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;stopwords_removal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">stopwords_removal2</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;stopwords_removal_final&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                     stopwords_removal
+0    [&#39;ora&#39;, &#39;pengaruh&#39;, &#39;bro&#39;, &#39;bah&#39;, &#39;jokowi&#39;, &#39;e...
+1    [&#39;jk&#39;, &#39;amp&#39;, &#39;paloh&#39;, &#39;ketar&#39;, &#39;ketir&#39;, &#39;samp...
+2                     [&#39;jusufkala&#39;, &#39;orqngtua&#39;, &#39;loh&#39;]
+3    [&#39;murtad&#39;, &#39;yohanes&#39;, &#39;bunglon&#39;, &#39;penghianat&#39;,...
+4    [&#39;murtad&#39;, &#39;yohanes&#39;, &#39;binglon&#39;, &#39;takut&#39;, &#39;kal...
+..                                                 ...
+102  [&#39;beritakan&#39;, &#39;jg&#39;, &#39;dgn&#39;, &#39;ayat&#39;, &#39;dlm&#39;, &#39;buk...
+103                                            [&#39;lll&#39;]
+104  [&#39;nama&#39;, &#39;nya&#39;, &#39;aja&#39;, &#39;agama&#39;, &#39;teroris&#39;, &#39;ba...
+105  [&#39;biiasanya&#39;, &#39;calon&#39;, &#39;yg&#39;, &#39;suka&#39;, &#39;serang&#39;,...
+106  [&#39;calon&#39;, &#39;ga&#39;, &#39;serang&#39;, &#39;menyerang&#39;, &#39;kepana...
+
+[107 rows x 1 columns]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     [ora, pengaruh, bro, bah, jokowi, endorse, bah...
+1     [jk, amp, paloh, ketar, ketir, sampe, anis, ka...
+2                            [jusufkala, orqngtua, loh]
+3     [murtad, yohanes, bunglon, penghianat, bangsa,...
+4     [murtad, yohanes, binglon, takut, kalah, takut...
+5     [jk, penghianat, bangsa, si, bunglon, yaman, s...
+6                        [barangkali, modal, yg, masuk]
+7                                    [pro, jokowi, yaa]
+8     [presiden, tdk, presiden, negara, presiden, ru...
+9     [biarlah, urusan, politik, jgn, kaitkan, dg, a...
+10    [kumis, tipis, puas, pa, era, jokowi, bisnis, ...
+11         [si, caplin, jk, ketar, ketir, maju, jokowi]
+12         [jokowi, petugas, partai, negarawan, sejati]
+13                                 [rekam, jejak, anis]
+14         [awas, jk, udh, terpilih, cmn, duduk, kursi]
+15                      [chaplin, nih, pilpres, nongol]
+16    [marilah, dukung, channel, tanparagi, pendidik...
+17    [marilah, dukung, channel, tanparagi, pendidik...
+18         [cacing, kena, abu, gosok, blingsatan, boss]
+19                                        [maju, anies]
+Name: stopwords_removal_final, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="stemming">
+<h3>5. Stemming<a class="headerlink" href="#stemming" title="Permalink to this heading">#</a></h3>
+<p>Pada tahap ini preprocessing yang dilakukan adalah stemming. Stemming adalah proses pemetaan dan penguraian bentuk dari suatu kata menjadi bentuk kata dasarnya.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">sastrawi</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
+Requirement already satisfied: sastrawi in /usr/local/lib/python3.10/dist-packages (1.0.1)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">swifter</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
+Requirement already satisfied: swifter in /usr/local/lib/python3.10/dist-packages (1.3.4)
+Requirement already satisfied: pandas&gt;=1.0.0 in /usr/local/lib/python3.10/dist-packages (from swifter) (1.5.3)
+Requirement already satisfied: psutil&gt;=5.6.6 in /usr/local/lib/python3.10/dist-packages (from swifter) (5.9.5)
+Requirement already satisfied: dask[dataframe]&gt;=2.10.0 in /usr/local/lib/python3.10/dist-packages (from swifter) (2022.12.1)
+Requirement already satisfied: tqdm&gt;=4.33.0 in /usr/local/lib/python3.10/dist-packages (from swifter) (4.65.0)
+Requirement already satisfied: ipywidgets&gt;=7.0.0 in /usr/local/lib/python3.10/dist-packages (from swifter) (7.7.1)
+Requirement already satisfied: cloudpickle&gt;=0.2.2 in /usr/local/lib/python3.10/dist-packages (from swifter) (2.2.1)
+Requirement already satisfied: parso&gt;0.4.0 in /usr/local/lib/python3.10/dist-packages (from swifter) (0.8.3)
+Requirement already satisfied: bleach&gt;=3.1.1 in /usr/local/lib/python3.10/dist-packages (from swifter) (6.0.0)
+Requirement already satisfied: six&gt;=1.9.0 in /usr/local/lib/python3.10/dist-packages (from bleach&gt;=3.1.1-&gt;swifter) (1.16.0)
+Requirement already satisfied: webencodings in /usr/local/lib/python3.10/dist-packages (from bleach&gt;=3.1.1-&gt;swifter) (0.5.1)
+Requirement already satisfied: click&gt;=7.0 in /usr/local/lib/python3.10/dist-packages (from dask[dataframe]&gt;=2.10.0-&gt;swifter) (8.1.3)
+Requirement already satisfied: fsspec&gt;=0.6.0 in /usr/local/lib/python3.10/dist-packages (from dask[dataframe]&gt;=2.10.0-&gt;swifter) (2023.4.0)
+Requirement already satisfied: packaging&gt;=20.0 in /usr/local/lib/python3.10/dist-packages (from dask[dataframe]&gt;=2.10.0-&gt;swifter) (23.1)
+Requirement already satisfied: partd&gt;=0.3.10 in /usr/local/lib/python3.10/dist-packages (from dask[dataframe]&gt;=2.10.0-&gt;swifter) (1.4.0)
+Requirement already satisfied: pyyaml&gt;=5.3.1 in /usr/local/lib/python3.10/dist-packages (from dask[dataframe]&gt;=2.10.0-&gt;swifter) (6.0)
+Requirement already satisfied: toolz&gt;=0.8.2 in /usr/local/lib/python3.10/dist-packages (from dask[dataframe]&gt;=2.10.0-&gt;swifter) (0.12.0)
+Requirement already satisfied: numpy&gt;=1.18 in /usr/local/lib/python3.10/dist-packages (from dask[dataframe]&gt;=2.10.0-&gt;swifter) (1.22.4)
+Requirement already satisfied: ipykernel&gt;=4.5.1 in /usr/local/lib/python3.10/dist-packages (from ipywidgets&gt;=7.0.0-&gt;swifter) (5.5.6)
+Requirement already satisfied: ipython-genutils~=0.2.0 in /usr/local/lib/python3.10/dist-packages (from ipywidgets&gt;=7.0.0-&gt;swifter) (0.2.0)
+Requirement already satisfied: traitlets&gt;=4.3.1 in /usr/local/lib/python3.10/dist-packages (from ipywidgets&gt;=7.0.0-&gt;swifter) (5.7.1)
+Requirement already satisfied: widgetsnbextension~=3.6.0 in /usr/local/lib/python3.10/dist-packages (from ipywidgets&gt;=7.0.0-&gt;swifter) (3.6.4)
+Requirement already satisfied: ipython&gt;=4.0.0 in /usr/local/lib/python3.10/dist-packages (from ipywidgets&gt;=7.0.0-&gt;swifter) (7.34.0)
+Requirement already satisfied: jupyterlab-widgets&gt;=1.0.0 in /usr/local/lib/python3.10/dist-packages (from ipywidgets&gt;=7.0.0-&gt;swifter) (3.0.7)
+Requirement already satisfied: python-dateutil&gt;=2.8.1 in /usr/local/lib/python3.10/dist-packages (from pandas&gt;=1.0.0-&gt;swifter) (2.8.2)
+Requirement already satisfied: pytz&gt;=2020.1 in /usr/local/lib/python3.10/dist-packages (from pandas&gt;=1.0.0-&gt;swifter) (2022.7.1)
+Requirement already satisfied: jupyter-client in /usr/local/lib/python3.10/dist-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets&gt;=7.0.0-&gt;swifter) (6.1.12)
+Requirement already satisfied: tornado&gt;=4.2 in /usr/local/lib/python3.10/dist-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets&gt;=7.0.0-&gt;swifter) (6.2)
+Requirement already satisfied: setuptools&gt;=18.5 in /usr/local/lib/python3.10/dist-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.0.0-&gt;swifter) (67.7.2)
+Requirement already satisfied: jedi&gt;=0.16 in /usr/local/lib/python3.10/dist-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.0.0-&gt;swifter) (0.18.2)
+Requirement already satisfied: decorator in /usr/local/lib/python3.10/dist-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.0.0-&gt;swifter) (4.4.2)
+Requirement already satisfied: pickleshare in /usr/local/lib/python3.10/dist-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.0.0-&gt;swifter) (0.7.5)
+Requirement already satisfied: prompt-toolkit!=3.0.0,!=3.0.1,&lt;3.1.0,&gt;=2.0.0 in /usr/local/lib/python3.10/dist-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.0.0-&gt;swifter) (3.0.38)
+Requirement already satisfied: pygments in /usr/local/lib/python3.10/dist-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.0.0-&gt;swifter) (2.14.0)
+Requirement already satisfied: backcall in /usr/local/lib/python3.10/dist-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.0.0-&gt;swifter) (0.2.0)
+Requirement already satisfied: matplotlib-inline in /usr/local/lib/python3.10/dist-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.0.0-&gt;swifter) (0.1.6)
+Requirement already satisfied: pexpect&gt;4.3 in /usr/local/lib/python3.10/dist-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.0.0-&gt;swifter) (4.8.0)
+Requirement already satisfied: locket in /usr/local/lib/python3.10/dist-packages (from partd&gt;=0.3.10-&gt;dask[dataframe]&gt;=2.10.0-&gt;swifter) (1.0.0)
+Requirement already satisfied: notebook&gt;=4.4.1 in /usr/local/lib/python3.10/dist-packages (from widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.0.0-&gt;swifter) (6.4.8)
+Requirement already satisfied: jinja2 in /usr/local/lib/python3.10/dist-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.0.0-&gt;swifter) (3.1.2)
+Requirement already satisfied: pyzmq&gt;=17 in /usr/local/lib/python3.10/dist-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.0.0-&gt;swifter) (23.2.1)
+Requirement already satisfied: argon2-cffi in /usr/local/lib/python3.10/dist-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.0.0-&gt;swifter) (21.3.0)
+Requirement already satisfied: jupyter-core&gt;=4.6.1 in /usr/local/lib/python3.10/dist-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.0.0-&gt;swifter) (5.3.0)
+Requirement already satisfied: nbformat in /usr/local/lib/python3.10/dist-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.0.0-&gt;swifter) (5.8.0)
+Requirement already satisfied: nbconvert in /usr/local/lib/python3.10/dist-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.0.0-&gt;swifter) (6.5.4)
+Requirement already satisfied: nest-asyncio&gt;=1.5 in /usr/local/lib/python3.10/dist-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.0.0-&gt;swifter) (1.5.6)
+Requirement already satisfied: Send2Trash&gt;=1.8.0 in /usr/local/lib/python3.10/dist-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.0.0-&gt;swifter) (1.8.0)
+Requirement already satisfied: terminado&gt;=0.8.3 in /usr/local/lib/python3.10/dist-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.0.0-&gt;swifter) (0.17.1)
+Requirement already satisfied: prometheus-client in /usr/local/lib/python3.10/dist-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.0.0-&gt;swifter) (0.16.0)
+Requirement already satisfied: ptyprocess&gt;=0.5 in /usr/local/lib/python3.10/dist-packages (from pexpect&gt;4.3-&gt;ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.0.0-&gt;swifter) (0.7.0)
+Requirement already satisfied: wcwidth in /usr/local/lib/python3.10/dist-packages (from prompt-toolkit!=3.0.0,!=3.0.1,&lt;3.1.0,&gt;=2.0.0-&gt;ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.0.0-&gt;swifter) (0.2.6)
+Requirement already satisfied: platformdirs&gt;=2.5 in /usr/local/lib/python3.10/dist-packages (from jupyter-core&gt;=4.6.1-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.0.0-&gt;swifter) (3.3.0)
+Requirement already satisfied: argon2-cffi-bindings in /usr/local/lib/python3.10/dist-packages (from argon2-cffi-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.0.0-&gt;swifter) (21.2.0)
+Requirement already satisfied: MarkupSafe&gt;=2.0 in /usr/local/lib/python3.10/dist-packages (from jinja2-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.0.0-&gt;swifter) (2.1.2)
+Requirement already satisfied: lxml in /usr/local/lib/python3.10/dist-packages (from nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.0.0-&gt;swifter) (4.9.2)
+Requirement already satisfied: beautifulsoup4 in /usr/local/lib/python3.10/dist-packages (from nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.0.0-&gt;swifter) (4.11.2)
+Requirement already satisfied: defusedxml in /usr/local/lib/python3.10/dist-packages (from nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.0.0-&gt;swifter) (0.7.1)
+Requirement already satisfied: entrypoints&gt;=0.2.2 in /usr/local/lib/python3.10/dist-packages (from nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.0.0-&gt;swifter) (0.4)
+Requirement already satisfied: jupyterlab-pygments in /usr/local/lib/python3.10/dist-packages (from nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.0.0-&gt;swifter) (0.2.2)
+Requirement already satisfied: mistune&lt;2,&gt;=0.8.1 in /usr/local/lib/python3.10/dist-packages (from nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.0.0-&gt;swifter) (0.8.4)
+Requirement already satisfied: nbclient&gt;=0.5.0 in /usr/local/lib/python3.10/dist-packages (from nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.0.0-&gt;swifter) (0.7.4)
+Requirement already satisfied: pandocfilters&gt;=1.4.1 in /usr/local/lib/python3.10/dist-packages (from nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.0.0-&gt;swifter) (1.5.0)
+Requirement already satisfied: tinycss2 in /usr/local/lib/python3.10/dist-packages (from nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.0.0-&gt;swifter) (1.2.1)
+Requirement already satisfied: fastjsonschema in /usr/local/lib/python3.10/dist-packages (from nbformat-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.0.0-&gt;swifter) (2.16.3)
+Requirement already satisfied: jsonschema&gt;=2.6 in /usr/local/lib/python3.10/dist-packages (from nbformat-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.0.0-&gt;swifter) (4.3.3)
+Requirement already satisfied: attrs&gt;=17.4.0 in /usr/local/lib/python3.10/dist-packages (from jsonschema&gt;=2.6-&gt;nbformat-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.0.0-&gt;swifter) (23.1.0)
+Requirement already satisfied: pyrsistent!=0.17.0,!=0.17.1,!=0.17.2,&gt;=0.14.0 in /usr/local/lib/python3.10/dist-packages (from jsonschema&gt;=2.6-&gt;nbformat-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.0.0-&gt;swifter) (0.19.3)
+Requirement already satisfied: cffi&gt;=1.0.1 in /usr/local/lib/python3.10/dist-packages (from argon2-cffi-bindings-&gt;argon2-cffi-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.0.0-&gt;swifter) (1.15.1)
+Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.10/dist-packages (from beautifulsoup4-&gt;nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.0.0-&gt;swifter) (2.4.1)
+Requirement already satisfied: pycparser in /usr/local/lib/python3.10/dist-packages (from cffi&gt;=1.0.1-&gt;argon2-cffi-bindings-&gt;argon2-cffi-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.0.0-&gt;swifter) (2.21)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#proses stem</span>
+<span class="kn">from</span> <span class="nn">Sastrawi.Stemmer.StemmerFactory</span> <span class="kn">import</span> <span class="n">StemmerFactory</span>
+<span class="kn">import</span> <span class="nn">string</span>
+<span class="kn">import</span> <span class="nn">swifter</span>
+<span class="n">factory</span> <span class="o">=</span> <span class="n">StemmerFactory</span><span class="p">()</span>
+<span class="n">stemmer</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="n">create_stemmer</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">stemming</span> <span class="p">(</span><span class="n">term</span><span class="p">):</span>
+  <span class="k">return</span> <span class="n">stemmer</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">term</span><span class="p">)</span>
+
+<span class="n">term_dict</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">document</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;stopwords_removal_final&#39;</span><span class="p">]:</span>
+  <span class="k">for</span> <span class="n">term</span> <span class="ow">in</span> <span class="n">document</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">term</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">term_dict</span><span class="p">:</span>
+      <span class="n">term_dict</span><span class="p">[</span><span class="n">term</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">term_dict</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-----------------------------&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>749
+-----------------------------
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">term</span> <span class="ow">in</span> <span class="n">term_dict</span><span class="p">:</span>
+  <span class="n">term_dict</span><span class="p">[</span><span class="n">term</span><span class="p">]</span> <span class="o">=</span> <span class="n">stemming</span><span class="p">(</span><span class="n">term</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">term</span><span class="p">,</span><span class="s2">&quot;:&quot;</span><span class="p">,</span><span class="n">term_dict</span><span class="p">[</span><span class="n">term</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">term_dict</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-----------------------------&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ora : ora
+pengaruh : pengaruh
+bro : bro
+bah : bah
+jokowi : jokowi
+endorse : endorse
+cawe : cawe
+br : br
+joe : joe
+biden : biden
+tinggal : tinggal
+diam : diam
+catat : catat
+jk : jk
+amp : amp
+paloh : paloh
+ketar : ketar
+ketir : tir
+sampe : sampe
+anis : anis
+kalah : kalah
+hilang : hilang
+kesempatan : sempat
+ngeruk : ngeruk
+b : b
+duit : duit
+rakyat : rakyat
+melakui : laku
+proyek : proyek
+bumn : bumn
+karna : karna
+jaman : jaman
+kekunci : kunci
+mangkanya : mangkanya
+bosowa : bosowa
+oleng : oleng
+keluarga : keluarga
+turun : turun
+bela : bela
+jusufkala : jusufkala
+orqngtua : orqngtua
+loh : loh
+murtad : murtad
+yohanes : yohanes
+bunglon : bunglon
+penghianat : penghianat
+bangsa : bangsa
+capres : capres
+ko : ko
+hina : hina
+nenara : nenara
+tamu : tamu
+binglon : binglon
+takut : takut
+si : si
+yaman : yaman
+smua : smua
+kadrun : kadrun
+badjingan : badjingan
+kabeh : kabeh
+pengen : ken
+korupsi : korupsi
+barangkali : barangkali
+modal : modal
+yg : yg
+masuk : masuk
+pro : pro
+yaa : yaa
+presiden : presiden
+tdk : tdk
+negara : negara
+rumah : rumah
+tangga : tangga
+biarlah : biar
+urusan : urus
+politik : politik
+jgn : jgn
+kaitkan : kait
+dg : dg
+agama : agama
+biar : biar
+mrk : mrk
+agamanya : agama
+gak : gak
+pnya : pnya
+tgg : tgg
+peresiden : residen
+mendukung : dukung
+slh : slh
+milih : milih
+smg : smg
+indonesia : indonesia
+sadar : sadar
+bertahun : tahun
+bgmn : bgmn
+kehidupan : hidup
+raakyat : raakyat
+merasakan : rasa
+kumis : kumis
+tipis : tipis
+puas : puas
+pa : pa
+era : era
+bisnis : bisnis
+lingkup : lingkup
+tutup : tutup
+caplin : caplin
+maju : maju
+petugas : tugas
+partai : partai
+negarawan : negarawan
+sejati : sejati
+rekam : rekam
+jejak : jejak
+awas : awas
+udh : udh
+terpilih : pilih
+cmn : cmn
+duduk : duduk
+kursi : kursi
+chaplin : chaplin
+nih : nih
+pilpres : pilpres
+nongol : nongol
+marilah : mari
+dukung : dukung
+channel : channel
+tanparagi : tanparagi
+pendidikan : didik
+islam : islam
+modern : modern
+berfilosofi : filosof
+kemajuan : maju
+cacing : cacing
+kena : kena
+abu : abu
+gosok : gosok
+blingsatan : blingsatan
+boss : boss
+anies : anies
+duh : duh
+produk : produk
+gagal : gagal
+dipaksain : dipaksain
+ajah : ajah
+tuk : tuk
+mimpin : mimpin
+kasar : kasar
+bed : bed
+dah : dah
+ah : ah
+permainan : main
+politiknya : politik
+badut : badut
+memperbaiki : baik
+jakarta : jakarta
+kalo : kalo
+program : program
+berjalan : jalan
+dieranya : era
+rusak : rusak
+pemimpin : pimpin
+pintar : pintar
+ngomong : ngomong
+tok : tok
+pengganti : ganti
+sejalan : jalan
+nawacita : nawacita
+karbitan : karbitan
+gt : gt
+onta : onta
+goblok : goblok
+duitnya : duit
+ya : ya
+pejabat : jabat
+publik : publik
+ngeri : ngeri
+dgn : dgn
+pns : pns
+jg : jg
+orba : orba
+tp : tp
+anti : anti
+allah : allah
+selamatkan : selamat
+nkri : nkri
+daru : daru
+rorongan : rorongan
+merusak : rusak
+tatan : tatan
+nuswantoro : nuswantoro
+wan : wan
+abud : abud
+garong : garong
+merampas : rampas
+hak : hak
+ditangkap : tangkap
+maling : maling
+uang : uang
+rakyet : rakyet
+dingarang : dingarang
+gass : gass
+jokowiii : jokowiii
+hiraukan : hirau
+gelisah : gelisah
+bentar : bentar
+asam : asam
+lambung : lambung
+katanyakan : katanyakan
+planga : planga
+plongo : plongo
+bebek : bebek
+lumpuh : lumpuh
+sih : sih
+banget : banget
+sicaplon : sicaplon
+mantan : mantan
+wapres : wapres
+x : x
+dlm : dlm
+pilgub : pilgub
+dki : dki
+netraljgn : netraljgn
+sifat : sifat
+nya : nya
+sensitif : sensitif
+gk : gk
+perlulah : perlu
+sbut : sbut
+nama : nama
+cocok : cocok
+didepan : depan
+kunci : kunci
+rapat : rapat
+mulut : mulut
+utk : utk
+ht : ht
+rakyatnya : rakyat
+etika : etika
+klu : klu
+joko : joko
+wi : wi
+dianggap : anggap
+mencederai : cedera
+lha : lha
+sianus : sianus
+kampanye : kampanye
+duluan : duluan
+ga : ga
+bego : bego
+dipelihara : pelihara
+emg : emg
+gaboleh : gaboleh
+bgtu : bgtu
+berkualitas : kualitas
+sumatera : sumatera
+memilih : pilih
+beliau : beliau
+for : for
+ri : ri
+merangkul : rangkul
+golongan : golong
+cilik : cilik
+pesan : pesan
+keren : keren
+rb : rb
+garis : garis
+bawahi : bawah
+pemilik : milik
+kekuasaan : kuasa
+republik : republik
+berbicara : bicara
+hilangnya : hilang
+pindahnya : pindah
+pindah : pindah
+berpindah : pindah
+berganti : ganti
+kewenangan : wenang
+menjalankan : jalan
+tangan : tangan
+menghargai : harga
+prinsip : prinsip
+dasar : dasar
+demokrasi : demokrasi
+namnya : namnya
+aja : aja
+mudtadin : mudtadin
+yihanes : yihanes
+ngomongnya : ngomongnya
+lancar : lancar
+gugup : gugup
+hasilnya : hasil
+kopong : kopong
+arifin : arifin
+cerdas : cerdas
+korban : korban
+hoax : hoax
+jd : jd
+bodoh : bodoh
+itukan : itu
+mnurut : mnurut
+selera : selera
+p : p
+ijasah : ijasah
+palsu : palsu
+ngeles : ngeles
+to : to
+mencla : mencla
+mincle : mincle
+yamg : yamg
+salah : salah
+kepentingan : penting
+trus : trus
+usulkan : usul
+cagub : cagub
+ribut : ribut
+maklumlah : maklum
+ijazahnya : ijazah
+sonhaji : sonhaji
+masaknya : masak
+matang : matang
+kali : kali
+basi : basi
+menyarankan : saran
+indenpenden : indenpenden
+calon : calon
+a : a
+ra : ra
+rasid : rasid
+baswedan : baswedan
+orang : orang
+sll : sll
+cari : cari
+kesalahan : salah
+lawan : lawan
+pdhal : pdhal
+dilanggar : langgar
+indonesi : indonesi
+sdh : sdh
+pd : pd
+tau : tau
+raja : raja
+alasan : alas
+bicara : bicara
+muter : muter
+bernarasi : narasi
+diruang : ruang
+hampa : hampa
+alias : alias
+halu : halu
+akut : akut
+praktek : praktek
+pilih : pilih
+suka : suka
+memutar : putar
+balikkan : balik
+fakta : fakta
+mencerminkan : cermin
+indonesiaan : indonesia
+jujur : jujur
+terbuka : buka
+rendah : rendah
+hati : hati
+dpt : dpt
+diterima : terima
+kakek : kakek
+neneknya : nenek
+buyutnya : buyut
+darah : darah
+ganjar : ganjar
+pranowo : pranowo
+aamiiin : aamiiin
+robbal : robbal
+alamiiin : alamiiin
+menyangkal : sangkal
+ndak : ndak
+hebatnya : hebat
+presidenku : presiden
+quot : quot
+nge : nge
+les : les
+guoblog : guoblog
+pembina : bina
+menkopolhukam : menkopolhukam
+dibawahnya : bawah
+paham : paham
+paluh : paluh
+mumet : mumet
+kliru : kliru
+pilihanya : pilihanya
+y : y
+krj : krj
+nyata : nyata
+cintai : cinta
+bkn : bkn
+merangkai : rangkai
+hny : hny
+jabatan : jabat
+ll : ll
+usir : usir
+teroris : teroris
+bajingan : bajing
+ratusan : ratus
+membunuh : bunuh
+menyiksa : siksa
+membantai : bantai
+memperkosa : perkosa
+merampok : rampok
+kekayaan : kaya
+negeri : negeri
+bawa : bawa
+leluhur : leluhur
+membangun : bangun
+gereja : gereja
+mewah : mewah
+hasil : hasil
+ngerampok : ngerampok
+mahpud : mahpud
+menteri : menteri
+puluh : puluh
+tni : tni
+polri : polri
+tembak : tembak
+mati : mati
+kristen : kristen
+jeneral : jeneral
+bintang : bintang
+sipil : sipil
+pesawat : pesawat
+bakar : bakar
+pilot : pilot
+penumpang : tumpang
+ketauan : tau
+ain : ain
+sembilan : sembilan
+prajurit : prajurit
+ormas : ormas
+fpi : fpi
+berdiri : diri
+ngipasin : ngipasin
+aparat : aparat
+membubarkan : bubar
+radikal : radikal
+luhut : luhut
+loly : loly
+sigit : sigit
+biang : biang
+ni : ni
+agus : agus
+s : s
+singaterbangun : singaterbangun
+ketua : ketua
+sekolah : sekolah
+ita : ita
+kandidat : kandidat
+menjabat : jabat
+terkenal : kenal
+jalur : jalur
+viral : viral
+sumur : sumur
+resapan : resap
+cemooh : cemooh
+warga : warga
+senang : senang
+tuh : tuh
+prestasi : prestasi
+sliweran : sliweran
+berita : berita
+pinter : pinter
+bacot : bacot
+doang : doang
+peduli : peduli
+melanjutkan : lanjut
+berpikir : pikir
+kau : kau
+salto : salto
+ente : ente
+pikir : pikir
+pdip : pdip
+teriak : teriak
+sby : sby
+asasi : asasi
+iro : iro
+hidup : hidup
+patung : patung
+bundaran : bundar
+hi : hi
+bambu : bambu
+hama : hama
+gulma : gulma
+bersihkan : sih
+krna : krna
+mengganggu : ganggu
+jalannya : jalan
+pembangunan : bangun
+sesuai : sesuai
+reelnya : reelnya
+bohir : bohir
+resah : resah
+heran : heran
+pasukan : pasu
+sakit : sakit
+maksa : maksa
+capers : capers
+rakus : rakus
+harta : harta
+lu : lu
+jdi : jdi
+barang : barang
+busuk : busuk
+laku : laku
+kadruuuuuuun : kadruuuuuuun
+paniiiiik : paniiiiik
+lll : lll
+grombolan : grombolan
+bubar : bubar
+cengeng : cengeng
+lo : lo
+kemane : kemane
+prabowo : prabowo
+tanding : tanding
+rezim : rezim
+byk : byk
+curangnya : curang
+mantap : mantap
+dp : dp
+monas : monas
+digunduli : gundul
+jalan : jalan
+mulus : mulus
+dilobangi : dilobangi
+item : item
+kelambui : kelambu
+tugu : tugu
+sepatu : sepatu
+sebelah : belah
+rotan : rotan
+dibongkar : bongkar
+pecat : pecat
+hebat : hebat
+sebahagian : sebahagian
+bentuk : bentuk
+perestasi : perestasi
+ter : ter
+bukti : bukti
+kemiri : kemiri
+iya : iya
+gubernur : gubernur
+ngajak : ngajak
+treakin : treakin
+intoleran : intoleran
+diskriminatif : diskriminatif
+rasiiisss : rasiiisss
+monyong : monyong
+congor : congor
+anjing : anjing
+ahok : ahok
+akal : akal
+bulus : bulus
+kepemimpinan : pimpin
+ummat : ummat
+lihat : lihat
+ntt : ntt
+bali : bal
+wilayah : wilayah
+mayoritas : mayoritas
+muslim : muslim
+kafir : kafir
+malu : malu
+bangor : bangor
+nyalon : nyalon
+legowo : legowo
+treak : treak
+ngatain : ngatain
+rasiiss : rasiiss
+aman : aman
+pilkada : pilkada
+seruet : seruet
+bersyahwat : syahwat
+monyet : monyet
+buang : buang
+syahwat : syahwat
+mauuukkk : mauuukkk
+kaliiikkk : kaliiikkk
+emange : emange
+doangan : doang
+visi : visi
+misi : misi
+kerja : kerja
+nysta : nysta
+wwlaupun : wwlaupun
+buatcpatung : buatcpatung
+idola : idola
+ku : ku
+president : president
+breowok : breowok
+boneka : boneka
+meraja : raja
+lela : lela
+golkar : golkar
+gorong : gorong
+formula : formula
+e : e
+usut : usut
+tuntas : tuntas
+cewe : cewe
+jok : jok
+dsr : dsr
+presdn : presdn
+ta : ta
+becus : becus
+iris : iris
+atur : atur
+pemilu : milu
+ha : ha
+dukungan : dukung
+bos : bos
+menang : menang
+dijadikan : jadi
+lebihnya : lebih
+minggu : minggu
+lebaran : lebaran
+udah : udah
+bikin : bikin
+dosa : dosa
+bilang : bilang
+gabecus : gabecus
+kanau : kanau
+niat : niat
+silahkan : silah
+pitnah : pitnah
+sanah : sanah
+sinih : sih
+insa : insa
+alloh : alloh
+gabakalan : gabakalan
+mema : mema
+ap : ap
+kon : kon
+pemitnah : pemitnah
+klo : klo
+komen : komen
+logis : logis
+emang : emang
+dajal : dajal
+n : n
+haknya : hak
+fir : fir
+aun : aun
+ama : ama
+href : href
+www : www
+youtube : youtube
+com : com
+watch : watch
+v : v
+lcpdhras : lcpdhras
+t : t
+ms : ms
+sarak : sarak
+irwan : irwan
+ee : ee
+pake : pake
+kasih : kasih
+yana : yana
+nisnis : nisnis
+panik : panik
+nyungsep : nyungsep
+ngawur : ngawur
+yoh : yoh
+yesus : yesus
+kepadamu : kepada
+sesungguhnya : sungguh
+makan : makan
+daging : daging
+anak : anak
+manusia : manusia
+minum : minum
+dirimu : diri
+tuhan : tuhan
+omongan : omong
+suku : suku
+kanibal : kanibal
+kepala : kepala
+zombie : zombie
+mendengar : dengar
+mengambil : ambil
+waras : waras
+markus : markus
+terbukti : bukti
+gila : gila
+lukas : lukas
+diserahkan : serah
+berdosa : dosa
+disalibkan : salib
+ketiga : tiga
+bangkit : bangkit
+mayat : mayat
+disuruh : suruh
+sang : sang
+rasul : rasul
+nyembah : nyembah
+roma : roma
+ayat : ayat
+mengaku : aku
+mulutmu : mulut
+percaya : percaya
+hatimu : hati
+membangkitkan : bangkit
+diselamatkan : selamat
+ajaran : ajar
+perzombian : perzombian
+azab : azab
+kubur : kubur
+siksa : siksa
+neraka : neraka
+dibenarkan : benar
+kesana : kesana
+kemari : kemari
+intinya : inti
+ngapain : ngapain
+hotbah : hotbah
+aneh : aneh
+sblm : sblm
+sklh : sklh
+dlu : dlu
+brti : brti
+gurunya : guru
+beritakan : berita
+buku : buku
+bibel : bibel
+yehezkiel : yehezkiel
+engkau : engkau
+bersundal : sundal
+bersetubuh : tubuh
+ngentot : ngentot
+tetangga : tetangga
+mu : mu
+org : org
+mesir : mesir
+aurat : aurat
+zombi : zombi
+biiasanya : biiasanya
+serang : serang
+jla : jla
+tk : tk
+menyerang : serang
+kepanasan : panas
+pendukung : dukung
+{&#39;ora&#39;: &#39;ora&#39;, &#39;pengaruh&#39;: &#39;pengaruh&#39;, &#39;bro&#39;: &#39;bro&#39;, &#39;bah&#39;: &#39;bah&#39;, &#39;jokowi&#39;: &#39;jokowi&#39;, &#39;endorse&#39;: &#39;endorse&#39;, &#39;cawe&#39;: &#39;cawe&#39;, &#39;br&#39;: &#39;br&#39;, &#39;joe&#39;: &#39;joe&#39;, &#39;biden&#39;: &#39;biden&#39;, &#39;tinggal&#39;: &#39;tinggal&#39;, &#39;diam&#39;: &#39;diam&#39;, &#39;catat&#39;: &#39;catat&#39;, &#39;jk&#39;: &#39;jk&#39;, &#39;amp&#39;: &#39;amp&#39;, &#39;paloh&#39;: &#39;paloh&#39;, &#39;ketar&#39;: &#39;ketar&#39;, &#39;ketir&#39;: &#39;tir&#39;, &#39;sampe&#39;: &#39;sampe&#39;, &#39;anis&#39;: &#39;anis&#39;, &#39;kalah&#39;: &#39;kalah&#39;, &#39;hilang&#39;: &#39;hilang&#39;, &#39;kesempatan&#39;: &#39;sempat&#39;, &#39;ngeruk&#39;: &#39;ngeruk&#39;, &#39;b&#39;: &#39;b&#39;, &#39;duit&#39;: &#39;duit&#39;, &#39;rakyat&#39;: &#39;rakyat&#39;, &#39;melakui&#39;: &#39;laku&#39;, &#39;proyek&#39;: &#39;proyek&#39;, &#39;bumn&#39;: &#39;bumn&#39;, &#39;karna&#39;: &#39;karna&#39;, &#39;jaman&#39;: &#39;jaman&#39;, &#39;kekunci&#39;: &#39;kunci&#39;, &#39;mangkanya&#39;: &#39;mangkanya&#39;, &#39;bosowa&#39;: &#39;bosowa&#39;, &#39;oleng&#39;: &#39;oleng&#39;, &#39;keluarga&#39;: &#39;keluarga&#39;, &#39;turun&#39;: &#39;turun&#39;, &#39;bela&#39;: &#39;bela&#39;, &#39;jusufkala&#39;: &#39;jusufkala&#39;, &#39;orqngtua&#39;: &#39;orqngtua&#39;, &#39;loh&#39;: &#39;loh&#39;, &#39;murtad&#39;: &#39;murtad&#39;, &#39;yohanes&#39;: &#39;yohanes&#39;, &#39;bunglon&#39;: &#39;bunglon&#39;, &#39;penghianat&#39;: &#39;penghianat&#39;, &#39;bangsa&#39;: &#39;bangsa&#39;, &#39;capres&#39;: &#39;capres&#39;, &#39;ko&#39;: &#39;ko&#39;, &#39;hina&#39;: &#39;hina&#39;, &#39;nenara&#39;: &#39;nenara&#39;, &#39;tamu&#39;: &#39;tamu&#39;, &#39;binglon&#39;: &#39;binglon&#39;, &#39;takut&#39;: &#39;takut&#39;, &#39;si&#39;: &#39;si&#39;, &#39;yaman&#39;: &#39;yaman&#39;, &#39;smua&#39;: &#39;smua&#39;, &#39;kadrun&#39;: &#39;kadrun&#39;, &#39;badjingan&#39;: &#39;badjingan&#39;, &#39;kabeh&#39;: &#39;kabeh&#39;, &#39;pengen&#39;: &#39;ken&#39;, &#39;korupsi&#39;: &#39;korupsi&#39;, &#39;barangkali&#39;: &#39;barangkali&#39;, &#39;modal&#39;: &#39;modal&#39;, &#39;yg&#39;: &#39;yg&#39;, &#39;masuk&#39;: &#39;masuk&#39;, &#39;pro&#39;: &#39;pro&#39;, &#39;yaa&#39;: &#39;yaa&#39;, &#39;presiden&#39;: &#39;presiden&#39;, &#39;tdk&#39;: &#39;tdk&#39;, &#39;negara&#39;: &#39;negara&#39;, &#39;rumah&#39;: &#39;rumah&#39;, &#39;tangga&#39;: &#39;tangga&#39;, &#39;biarlah&#39;: &#39;biar&#39;, &#39;urusan&#39;: &#39;urus&#39;, &#39;politik&#39;: &#39;politik&#39;, &#39;jgn&#39;: &#39;jgn&#39;, &#39;kaitkan&#39;: &#39;kait&#39;, &#39;dg&#39;: &#39;dg&#39;, &#39;agama&#39;: &#39;agama&#39;, &#39;biar&#39;: &#39;biar&#39;, &#39;mrk&#39;: &#39;mrk&#39;, &#39;agamanya&#39;: &#39;agama&#39;, &#39;gak&#39;: &#39;gak&#39;, &#39;pnya&#39;: &#39;pnya&#39;, &#39;tgg&#39;: &#39;tgg&#39;, &#39;peresiden&#39;: &#39;residen&#39;, &#39;mendukung&#39;: &#39;dukung&#39;, &#39;slh&#39;: &#39;slh&#39;, &#39;milih&#39;: &#39;milih&#39;, &#39;smg&#39;: &#39;smg&#39;, &#39;indonesia&#39;: &#39;indonesia&#39;, &#39;sadar&#39;: &#39;sadar&#39;, &#39;bertahun&#39;: &#39;tahun&#39;, &#39;bgmn&#39;: &#39;bgmn&#39;, &#39;kehidupan&#39;: &#39;hidup&#39;, &#39;raakyat&#39;: &#39;raakyat&#39;, &#39;merasakan&#39;: &#39;rasa&#39;, &#39;kumis&#39;: &#39;kumis&#39;, &#39;tipis&#39;: &#39;tipis&#39;, &#39;puas&#39;: &#39;puas&#39;, &#39;pa&#39;: &#39;pa&#39;, &#39;era&#39;: &#39;era&#39;, &#39;bisnis&#39;: &#39;bisnis&#39;, &#39;lingkup&#39;: &#39;lingkup&#39;, &#39;tutup&#39;: &#39;tutup&#39;, &#39;caplin&#39;: &#39;caplin&#39;, &#39;maju&#39;: &#39;maju&#39;, &#39;petugas&#39;: &#39;tugas&#39;, &#39;partai&#39;: &#39;partai&#39;, &#39;negarawan&#39;: &#39;negarawan&#39;, &#39;sejati&#39;: &#39;sejati&#39;, &#39;rekam&#39;: &#39;rekam&#39;, &#39;jejak&#39;: &#39;jejak&#39;, &#39;awas&#39;: &#39;awas&#39;, &#39;udh&#39;: &#39;udh&#39;, &#39;terpilih&#39;: &#39;pilih&#39;, &#39;cmn&#39;: &#39;cmn&#39;, &#39;duduk&#39;: &#39;duduk&#39;, &#39;kursi&#39;: &#39;kursi&#39;, &#39;chaplin&#39;: &#39;chaplin&#39;, &#39;nih&#39;: &#39;nih&#39;, &#39;pilpres&#39;: &#39;pilpres&#39;, &#39;nongol&#39;: &#39;nongol&#39;, &#39;marilah&#39;: &#39;mari&#39;, &#39;dukung&#39;: &#39;dukung&#39;, &#39;channel&#39;: &#39;channel&#39;, &#39;tanparagi&#39;: &#39;tanparagi&#39;, &#39;pendidikan&#39;: &#39;didik&#39;, &#39;islam&#39;: &#39;islam&#39;, &#39;modern&#39;: &#39;modern&#39;, &#39;berfilosofi&#39;: &#39;filosof&#39;, &#39;kemajuan&#39;: &#39;maju&#39;, &#39;cacing&#39;: &#39;cacing&#39;, &#39;kena&#39;: &#39;kena&#39;, &#39;abu&#39;: &#39;abu&#39;, &#39;gosok&#39;: &#39;gosok&#39;, &#39;blingsatan&#39;: &#39;blingsatan&#39;, &#39;boss&#39;: &#39;boss&#39;, &#39;anies&#39;: &#39;anies&#39;, &#39;duh&#39;: &#39;duh&#39;, &#39;produk&#39;: &#39;produk&#39;, &#39;gagal&#39;: &#39;gagal&#39;, &#39;dipaksain&#39;: &#39;dipaksain&#39;, &#39;ajah&#39;: &#39;ajah&#39;, &#39;tuk&#39;: &#39;tuk&#39;, &#39;mimpin&#39;: &#39;mimpin&#39;, &#39;kasar&#39;: &#39;kasar&#39;, &#39;bed&#39;: &#39;bed&#39;, &#39;dah&#39;: &#39;dah&#39;, &#39;ah&#39;: &#39;ah&#39;, &#39;permainan&#39;: &#39;main&#39;, &#39;politiknya&#39;: &#39;politik&#39;, &#39;badut&#39;: &#39;badut&#39;, &#39;memperbaiki&#39;: &#39;baik&#39;, &#39;jakarta&#39;: &#39;jakarta&#39;, &#39;kalo&#39;: &#39;kalo&#39;, &#39;program&#39;: &#39;program&#39;, &#39;berjalan&#39;: &#39;jalan&#39;, &#39;dieranya&#39;: &#39;era&#39;, &#39;rusak&#39;: &#39;rusak&#39;, &#39;pemimpin&#39;: &#39;pimpin&#39;, &#39;pintar&#39;: &#39;pintar&#39;, &#39;ngomong&#39;: &#39;ngomong&#39;, &#39;tok&#39;: &#39;tok&#39;, &#39;pengganti&#39;: &#39;ganti&#39;, &#39;sejalan&#39;: &#39;jalan&#39;, &#39;nawacita&#39;: &#39;nawacita&#39;, &#39;karbitan&#39;: &#39;karbitan&#39;, &#39;gt&#39;: &#39;gt&#39;, &#39;onta&#39;: &#39;onta&#39;, &#39;goblok&#39;: &#39;goblok&#39;, &#39;duitnya&#39;: &#39;duit&#39;, &#39;ya&#39;: &#39;ya&#39;, &#39;pejabat&#39;: &#39;jabat&#39;, &#39;publik&#39;: &#39;publik&#39;, &#39;ngeri&#39;: &#39;ngeri&#39;, &#39;dgn&#39;: &#39;dgn&#39;, &#39;pns&#39;: &#39;pns&#39;, &#39;jg&#39;: &#39;jg&#39;, &#39;orba&#39;: &#39;orba&#39;, &#39;tp&#39;: &#39;tp&#39;, &#39;anti&#39;: &#39;anti&#39;, &#39;allah&#39;: &#39;allah&#39;, &#39;selamatkan&#39;: &#39;selamat&#39;, &#39;nkri&#39;: &#39;nkri&#39;, &#39;daru&#39;: &#39;daru&#39;, &#39;rorongan&#39;: &#39;rorongan&#39;, &#39;merusak&#39;: &#39;rusak&#39;, &#39;tatan&#39;: &#39;tatan&#39;, &#39;nuswantoro&#39;: &#39;nuswantoro&#39;, &#39;wan&#39;: &#39;wan&#39;, &#39;abud&#39;: &#39;abud&#39;, &#39;garong&#39;: &#39;garong&#39;, &#39;merampas&#39;: &#39;rampas&#39;, &#39;hak&#39;: &#39;hak&#39;, &#39;ditangkap&#39;: &#39;tangkap&#39;, &#39;maling&#39;: &#39;maling&#39;, &#39;uang&#39;: &#39;uang&#39;, &#39;rakyet&#39;: &#39;rakyet&#39;, &#39;dingarang&#39;: &#39;dingarang&#39;, &#39;gass&#39;: &#39;gass&#39;, &#39;jokowiii&#39;: &#39;jokowiii&#39;, &#39;hiraukan&#39;: &#39;hirau&#39;, &#39;gelisah&#39;: &#39;gelisah&#39;, &#39;bentar&#39;: &#39;bentar&#39;, &#39;asam&#39;: &#39;asam&#39;, &#39;lambung&#39;: &#39;lambung&#39;, &#39;katanyakan&#39;: &#39;katanyakan&#39;, &#39;planga&#39;: &#39;planga&#39;, &#39;plongo&#39;: &#39;plongo&#39;, &#39;bebek&#39;: &#39;bebek&#39;, &#39;lumpuh&#39;: &#39;lumpuh&#39;, &#39;sih&#39;: &#39;sih&#39;, &#39;banget&#39;: &#39;banget&#39;, &#39;sicaplon&#39;: &#39;sicaplon&#39;, &#39;mantan&#39;: &#39;mantan&#39;, &#39;wapres&#39;: &#39;wapres&#39;, &#39;x&#39;: &#39;x&#39;, &#39;dlm&#39;: &#39;dlm&#39;, &#39;pilgub&#39;: &#39;pilgub&#39;, &#39;dki&#39;: &#39;dki&#39;, &#39;netraljgn&#39;: &#39;netraljgn&#39;, &#39;sifat&#39;: &#39;sifat&#39;, &#39;nya&#39;: &#39;nya&#39;, &#39;sensitif&#39;: &#39;sensitif&#39;, &#39;gk&#39;: &#39;gk&#39;, &#39;perlulah&#39;: &#39;perlu&#39;, &#39;sbut&#39;: &#39;sbut&#39;, &#39;nama&#39;: &#39;nama&#39;, &#39;cocok&#39;: &#39;cocok&#39;, &#39;didepan&#39;: &#39;depan&#39;, &#39;kunci&#39;: &#39;kunci&#39;, &#39;rapat&#39;: &#39;rapat&#39;, &#39;mulut&#39;: &#39;mulut&#39;, &#39;utk&#39;: &#39;utk&#39;, &#39;ht&#39;: &#39;ht&#39;, &#39;rakyatnya&#39;: &#39;rakyat&#39;, &#39;etika&#39;: &#39;etika&#39;, &#39;klu&#39;: &#39;klu&#39;, &#39;joko&#39;: &#39;joko&#39;, &#39;wi&#39;: &#39;wi&#39;, &#39;dianggap&#39;: &#39;anggap&#39;, &#39;mencederai&#39;: &#39;cedera&#39;, &#39;lha&#39;: &#39;lha&#39;, &#39;sianus&#39;: &#39;sianus&#39;, &#39;kampanye&#39;: &#39;kampanye&#39;, &#39;duluan&#39;: &#39;duluan&#39;, &#39;ga&#39;: &#39;ga&#39;, &#39;bego&#39;: &#39;bego&#39;, &#39;dipelihara&#39;: &#39;pelihara&#39;, &#39;emg&#39;: &#39;emg&#39;, &#39;gaboleh&#39;: &#39;gaboleh&#39;, &#39;bgtu&#39;: &#39;bgtu&#39;, &#39;berkualitas&#39;: &#39;kualitas&#39;, &#39;sumatera&#39;: &#39;sumatera&#39;, &#39;memilih&#39;: &#39;pilih&#39;, &#39;beliau&#39;: &#39;beliau&#39;, &#39;for&#39;: &#39;for&#39;, &#39;ri&#39;: &#39;ri&#39;, &#39;merangkul&#39;: &#39;rangkul&#39;, &#39;golongan&#39;: &#39;golong&#39;, &#39;cilik&#39;: &#39;cilik&#39;, &#39;pesan&#39;: &#39;pesan&#39;, &#39;keren&#39;: &#39;keren&#39;, &#39;rb&#39;: &#39;rb&#39;, &#39;garis&#39;: &#39;garis&#39;, &#39;bawahi&#39;: &#39;bawah&#39;, &#39;pemilik&#39;: &#39;milik&#39;, &#39;kekuasaan&#39;: &#39;kuasa&#39;, &#39;republik&#39;: &#39;republik&#39;, &#39;berbicara&#39;: &#39;bicara&#39;, &#39;hilangnya&#39;: &#39;hilang&#39;, &#39;pindahnya&#39;: &#39;pindah&#39;, &#39;pindah&#39;: &#39;pindah&#39;, &#39;berpindah&#39;: &#39;pindah&#39;, &#39;berganti&#39;: &#39;ganti&#39;, &#39;kewenangan&#39;: &#39;wenang&#39;, &#39;menjalankan&#39;: &#39;jalan&#39;, &#39;tangan&#39;: &#39;tangan&#39;, &#39;menghargai&#39;: &#39;harga&#39;, &#39;prinsip&#39;: &#39;prinsip&#39;, &#39;dasar&#39;: &#39;dasar&#39;, &#39;demokrasi&#39;: &#39;demokrasi&#39;, &#39;namnya&#39;: &#39;namnya&#39;, &#39;aja&#39;: &#39;aja&#39;, &#39;mudtadin&#39;: &#39;mudtadin&#39;, &#39;yihanes&#39;: &#39;yihanes&#39;, &#39;ngomongnya&#39;: &#39;ngomongnya&#39;, &#39;lancar&#39;: &#39;lancar&#39;, &#39;gugup&#39;: &#39;gugup&#39;, &#39;hasilnya&#39;: &#39;hasil&#39;, &#39;kopong&#39;: &#39;kopong&#39;, &#39;arifin&#39;: &#39;arifin&#39;, &#39;cerdas&#39;: &#39;cerdas&#39;, &#39;korban&#39;: &#39;korban&#39;, &#39;hoax&#39;: &#39;hoax&#39;, &#39;jd&#39;: &#39;jd&#39;, &#39;bodoh&#39;: &#39;bodoh&#39;, &#39;itukan&#39;: &#39;itu&#39;, &#39;mnurut&#39;: &#39;mnurut&#39;, &#39;selera&#39;: &#39;selera&#39;, &#39;p&#39;: &#39;p&#39;, &#39;ijasah&#39;: &#39;ijasah&#39;, &#39;palsu&#39;: &#39;palsu&#39;, &#39;ngeles&#39;: &#39;ngeles&#39;, &#39;to&#39;: &#39;to&#39;, &#39;mencla&#39;: &#39;mencla&#39;, &#39;mincle&#39;: &#39;mincle&#39;, &#39;yamg&#39;: &#39;yamg&#39;, &#39;salah&#39;: &#39;salah&#39;, &#39;kepentingan&#39;: &#39;penting&#39;, &#39;trus&#39;: &#39;trus&#39;, &#39;usulkan&#39;: &#39;usul&#39;, &#39;cagub&#39;: &#39;cagub&#39;, &#39;ribut&#39;: &#39;ribut&#39;, &#39;maklumlah&#39;: &#39;maklum&#39;, &#39;ijazahnya&#39;: &#39;ijazah&#39;, &#39;sonhaji&#39;: &#39;sonhaji&#39;, &#39;masaknya&#39;: &#39;masak&#39;, &#39;matang&#39;: &#39;matang&#39;, &#39;kali&#39;: &#39;kali&#39;, &#39;basi&#39;: &#39;basi&#39;, &#39;menyarankan&#39;: &#39;saran&#39;, &#39;indenpenden&#39;: &#39;indenpenden&#39;, &#39;calon&#39;: &#39;calon&#39;, &#39;a&#39;: &#39;a&#39;, &#39;ra&#39;: &#39;ra&#39;, &#39;rasid&#39;: &#39;rasid&#39;, &#39;baswedan&#39;: &#39;baswedan&#39;, &#39;orang&#39;: &#39;orang&#39;, &#39;sll&#39;: &#39;sll&#39;, &#39;cari&#39;: &#39;cari&#39;, &#39;kesalahan&#39;: &#39;salah&#39;, &#39;lawan&#39;: &#39;lawan&#39;, &#39;pdhal&#39;: &#39;pdhal&#39;, &#39;dilanggar&#39;: &#39;langgar&#39;, &#39;indonesi&#39;: &#39;indonesi&#39;, &#39;sdh&#39;: &#39;sdh&#39;, &#39;pd&#39;: &#39;pd&#39;, &#39;tau&#39;: &#39;tau&#39;, &#39;raja&#39;: &#39;raja&#39;, &#39;alasan&#39;: &#39;alas&#39;, &#39;bicara&#39;: &#39;bicara&#39;, &#39;muter&#39;: &#39;muter&#39;, &#39;bernarasi&#39;: &#39;narasi&#39;, &#39;diruang&#39;: &#39;ruang&#39;, &#39;hampa&#39;: &#39;hampa&#39;, &#39;alias&#39;: &#39;alias&#39;, &#39;halu&#39;: &#39;halu&#39;, &#39;akut&#39;: &#39;akut&#39;, &#39;praktek&#39;: &#39;praktek&#39;, &#39;pilih&#39;: &#39;pilih&#39;, &#39;suka&#39;: &#39;suka&#39;, &#39;memutar&#39;: &#39;putar&#39;, &#39;balikkan&#39;: &#39;balik&#39;, &#39;fakta&#39;: &#39;fakta&#39;, &#39;mencerminkan&#39;: &#39;cermin&#39;, &#39;indonesiaan&#39;: &#39;indonesia&#39;, &#39;jujur&#39;: &#39;jujur&#39;, &#39;terbuka&#39;: &#39;buka&#39;, &#39;rendah&#39;: &#39;rendah&#39;, &#39;hati&#39;: &#39;hati&#39;, &#39;dpt&#39;: &#39;dpt&#39;, &#39;diterima&#39;: &#39;terima&#39;, &#39;kakek&#39;: &#39;kakek&#39;, &#39;neneknya&#39;: &#39;nenek&#39;, &#39;buyutnya&#39;: &#39;buyut&#39;, &#39;darah&#39;: &#39;darah&#39;, &#39;ganjar&#39;: &#39;ganjar&#39;, &#39;pranowo&#39;: &#39;pranowo&#39;, &#39;aamiiin&#39;: &#39;aamiiin&#39;, &#39;robbal&#39;: &#39;robbal&#39;, &#39;alamiiin&#39;: &#39;alamiiin&#39;, &#39;menyangkal&#39;: &#39;sangkal&#39;, &#39;ndak&#39;: &#39;ndak&#39;, &#39;hebatnya&#39;: &#39;hebat&#39;, &#39;presidenku&#39;: &#39;presiden&#39;, &#39;quot&#39;: &#39;quot&#39;, &#39;nge&#39;: &#39;nge&#39;, &#39;les&#39;: &#39;les&#39;, &#39;guoblog&#39;: &#39;guoblog&#39;, &#39;pembina&#39;: &#39;bina&#39;, &#39;menkopolhukam&#39;: &#39;menkopolhukam&#39;, &#39;dibawahnya&#39;: &#39;bawah&#39;, &#39;paham&#39;: &#39;paham&#39;, &#39;paluh&#39;: &#39;paluh&#39;, &#39;mumet&#39;: &#39;mumet&#39;, &#39;kliru&#39;: &#39;kliru&#39;, &#39;pilihanya&#39;: &#39;pilihanya&#39;, &#39;y&#39;: &#39;y&#39;, &#39;krj&#39;: &#39;krj&#39;, &#39;nyata&#39;: &#39;nyata&#39;, &#39;cintai&#39;: &#39;cinta&#39;, &#39;bkn&#39;: &#39;bkn&#39;, &#39;merangkai&#39;: &#39;rangkai&#39;, &#39;hny&#39;: &#39;hny&#39;, &#39;jabatan&#39;: &#39;jabat&#39;, &#39;ll&#39;: &#39;ll&#39;, &#39;usir&#39;: &#39;usir&#39;, &#39;teroris&#39;: &#39;teroris&#39;, &#39;bajingan&#39;: &#39;bajing&#39;, &#39;ratusan&#39;: &#39;ratus&#39;, &#39;membunuh&#39;: &#39;bunuh&#39;, &#39;menyiksa&#39;: &#39;siksa&#39;, &#39;membantai&#39;: &#39;bantai&#39;, &#39;memperkosa&#39;: &#39;perkosa&#39;, &#39;merampok&#39;: &#39;rampok&#39;, &#39;kekayaan&#39;: &#39;kaya&#39;, &#39;negeri&#39;: &#39;negeri&#39;, &#39;bawa&#39;: &#39;bawa&#39;, &#39;leluhur&#39;: &#39;leluhur&#39;, &#39;membangun&#39;: &#39;bangun&#39;, &#39;gereja&#39;: &#39;gereja&#39;, &#39;mewah&#39;: &#39;mewah&#39;, &#39;hasil&#39;: &#39;hasil&#39;, &#39;ngerampok&#39;: &#39;ngerampok&#39;, &#39;mahpud&#39;: &#39;mahpud&#39;, &#39;menteri&#39;: &#39;menteri&#39;, &#39;puluh&#39;: &#39;puluh&#39;, &#39;tni&#39;: &#39;tni&#39;, &#39;polri&#39;: &#39;polri&#39;, &#39;tembak&#39;: &#39;tembak&#39;, &#39;mati&#39;: &#39;mati&#39;, &#39;kristen&#39;: &#39;kristen&#39;, &#39;jeneral&#39;: &#39;jeneral&#39;, &#39;bintang&#39;: &#39;bintang&#39;, &#39;sipil&#39;: &#39;sipil&#39;, &#39;pesawat&#39;: &#39;pesawat&#39;, &#39;bakar&#39;: &#39;bakar&#39;, &#39;pilot&#39;: &#39;pilot&#39;, &#39;penumpang&#39;: &#39;tumpang&#39;, &#39;ketauan&#39;: &#39;tau&#39;, &#39;ain&#39;: &#39;ain&#39;, &#39;sembilan&#39;: &#39;sembilan&#39;, &#39;prajurit&#39;: &#39;prajurit&#39;, &#39;ormas&#39;: &#39;ormas&#39;, &#39;fpi&#39;: &#39;fpi&#39;, &#39;berdiri&#39;: &#39;diri&#39;, &#39;ngipasin&#39;: &#39;ngipasin&#39;, &#39;aparat&#39;: &#39;aparat&#39;, &#39;membubarkan&#39;: &#39;bubar&#39;, &#39;radikal&#39;: &#39;radikal&#39;, &#39;luhut&#39;: &#39;luhut&#39;, &#39;loly&#39;: &#39;loly&#39;, &#39;sigit&#39;: &#39;sigit&#39;, &#39;biang&#39;: &#39;biang&#39;, &#39;ni&#39;: &#39;ni&#39;, &#39;agus&#39;: &#39;agus&#39;, &#39;s&#39;: &#39;s&#39;, &#39;singaterbangun&#39;: &#39;singaterbangun&#39;, &#39;ketua&#39;: &#39;ketua&#39;, &#39;sekolah&#39;: &#39;sekolah&#39;, &#39;ita&#39;: &#39;ita&#39;, &#39;kandidat&#39;: &#39;kandidat&#39;, &#39;menjabat&#39;: &#39;jabat&#39;, &#39;terkenal&#39;: &#39;kenal&#39;, &#39;jalur&#39;: &#39;jalur&#39;, &#39;viral&#39;: &#39;viral&#39;, &#39;sumur&#39;: &#39;sumur&#39;, &#39;resapan&#39;: &#39;resap&#39;, &#39;cemooh&#39;: &#39;cemooh&#39;, &#39;warga&#39;: &#39;warga&#39;, &#39;senang&#39;: &#39;senang&#39;, &#39;tuh&#39;: &#39;tuh&#39;, &#39;prestasi&#39;: &#39;prestasi&#39;, &#39;sliweran&#39;: &#39;sliweran&#39;, &#39;berita&#39;: &#39;berita&#39;, &#39;pinter&#39;: &#39;pinter&#39;, &#39;bacot&#39;: &#39;bacot&#39;, &#39;doang&#39;: &#39;doang&#39;, &#39;peduli&#39;: &#39;peduli&#39;, &#39;melanjutkan&#39;: &#39;lanjut&#39;, &#39;berpikir&#39;: &#39;pikir&#39;, &#39;kau&#39;: &#39;kau&#39;, &#39;salto&#39;: &#39;salto&#39;, &#39;ente&#39;: &#39;ente&#39;, &#39;pikir&#39;: &#39;pikir&#39;, &#39;pdip&#39;: &#39;pdip&#39;, &#39;teriak&#39;: &#39;teriak&#39;, &#39;sby&#39;: &#39;sby&#39;, &#39;asasi&#39;: &#39;asasi&#39;, &#39;iro&#39;: &#39;iro&#39;, &#39;hidup&#39;: &#39;hidup&#39;, &#39;patung&#39;: &#39;patung&#39;, &#39;bundaran&#39;: &#39;bundar&#39;, &#39;hi&#39;: &#39;hi&#39;, &#39;bambu&#39;: &#39;bambu&#39;, &#39;hama&#39;: &#39;hama&#39;, &#39;gulma&#39;: &#39;gulma&#39;, &#39;bersihkan&#39;: &#39;sih&#39;, &#39;krna&#39;: &#39;krna&#39;, &#39;mengganggu&#39;: &#39;ganggu&#39;, &#39;jalannya&#39;: &#39;jalan&#39;, &#39;pembangunan&#39;: &#39;bangun&#39;, &#39;sesuai&#39;: &#39;sesuai&#39;, &#39;reelnya&#39;: &#39;reelnya&#39;, &#39;bohir&#39;: &#39;bohir&#39;, &#39;resah&#39;: &#39;resah&#39;, &#39;heran&#39;: &#39;heran&#39;, &#39;pasukan&#39;: &#39;pasu&#39;, &#39;sakit&#39;: &#39;sakit&#39;, &#39;maksa&#39;: &#39;maksa&#39;, &#39;capers&#39;: &#39;capers&#39;, &#39;rakus&#39;: &#39;rakus&#39;, &#39;harta&#39;: &#39;harta&#39;, &#39;lu&#39;: &#39;lu&#39;, &#39;jdi&#39;: &#39;jdi&#39;, &#39;barang&#39;: &#39;barang&#39;, &#39;busuk&#39;: &#39;busuk&#39;, &#39;laku&#39;: &#39;laku&#39;, &#39;kadruuuuuuun&#39;: &#39;kadruuuuuuun&#39;, &#39;paniiiiik&#39;: &#39;paniiiiik&#39;, &#39;lll&#39;: &#39;lll&#39;, &#39;grombolan&#39;: &#39;grombolan&#39;, &#39;bubar&#39;: &#39;bubar&#39;, &#39;cengeng&#39;: &#39;cengeng&#39;, &#39;lo&#39;: &#39;lo&#39;, &#39;kemane&#39;: &#39;kemane&#39;, &#39;prabowo&#39;: &#39;prabowo&#39;, &#39;tanding&#39;: &#39;tanding&#39;, &#39;rezim&#39;: &#39;rezim&#39;, &#39;byk&#39;: &#39;byk&#39;, &#39;curangnya&#39;: &#39;curang&#39;, &#39;mantap&#39;: &#39;mantap&#39;, &#39;dp&#39;: &#39;dp&#39;, &#39;monas&#39;: &#39;monas&#39;, &#39;digunduli&#39;: &#39;gundul&#39;, &#39;jalan&#39;: &#39;jalan&#39;, &#39;mulus&#39;: &#39;mulus&#39;, &#39;dilobangi&#39;: &#39;dilobangi&#39;, &#39;item&#39;: &#39;item&#39;, &#39;kelambui&#39;: &#39;kelambu&#39;, &#39;tugu&#39;: &#39;tugu&#39;, &#39;sepatu&#39;: &#39;sepatu&#39;, &#39;sebelah&#39;: &#39;belah&#39;, &#39;rotan&#39;: &#39;rotan&#39;, &#39;dibongkar&#39;: &#39;bongkar&#39;, &#39;pecat&#39;: &#39;pecat&#39;, &#39;hebat&#39;: &#39;hebat&#39;, &#39;sebahagian&#39;: &#39;sebahagian&#39;, &#39;bentuk&#39;: &#39;bentuk&#39;, &#39;perestasi&#39;: &#39;perestasi&#39;, &#39;ter&#39;: &#39;ter&#39;, &#39;bukti&#39;: &#39;bukti&#39;, &#39;kemiri&#39;: &#39;kemiri&#39;, &#39;iya&#39;: &#39;iya&#39;, &#39;gubernur&#39;: &#39;gubernur&#39;, &#39;ngajak&#39;: &#39;ngajak&#39;, &#39;treakin&#39;: &#39;treakin&#39;, &#39;intoleran&#39;: &#39;intoleran&#39;, &#39;diskriminatif&#39;: &#39;diskriminatif&#39;, &#39;rasiiisss&#39;: &#39;rasiiisss&#39;, &#39;monyong&#39;: &#39;monyong&#39;, &#39;congor&#39;: &#39;congor&#39;, &#39;anjing&#39;: &#39;anjing&#39;, &#39;ahok&#39;: &#39;ahok&#39;, &#39;akal&#39;: &#39;akal&#39;, &#39;bulus&#39;: &#39;bulus&#39;, &#39;kepemimpinan&#39;: &#39;pimpin&#39;, &#39;ummat&#39;: &#39;ummat&#39;, &#39;lihat&#39;: &#39;lihat&#39;, &#39;ntt&#39;: &#39;ntt&#39;, &#39;bali&#39;: &#39;bal&#39;, &#39;wilayah&#39;: &#39;wilayah&#39;, &#39;mayoritas&#39;: &#39;mayoritas&#39;, &#39;muslim&#39;: &#39;muslim&#39;, &#39;kafir&#39;: &#39;kafir&#39;, &#39;malu&#39;: &#39;malu&#39;, &#39;bangor&#39;: &#39;bangor&#39;, &#39;nyalon&#39;: &#39;nyalon&#39;, &#39;legowo&#39;: &#39;legowo&#39;, &#39;treak&#39;: &#39;treak&#39;, &#39;ngatain&#39;: &#39;ngatain&#39;, &#39;rasiiss&#39;: &#39;rasiiss&#39;, &#39;aman&#39;: &#39;aman&#39;, &#39;pilkada&#39;: &#39;pilkada&#39;, &#39;seruet&#39;: &#39;seruet&#39;, &#39;bersyahwat&#39;: &#39;syahwat&#39;, &#39;monyet&#39;: &#39;monyet&#39;, &#39;buang&#39;: &#39;buang&#39;, &#39;syahwat&#39;: &#39;syahwat&#39;, &#39;mauuukkk&#39;: &#39;mauuukkk&#39;, &#39;kaliiikkk&#39;: &#39;kaliiikkk&#39;, &#39;emange&#39;: &#39;emange&#39;, &#39;doangan&#39;: &#39;doang&#39;, &#39;visi&#39;: &#39;visi&#39;, &#39;misi&#39;: &#39;misi&#39;, &#39;kerja&#39;: &#39;kerja&#39;, &#39;nysta&#39;: &#39;nysta&#39;, &#39;wwlaupun&#39;: &#39;wwlaupun&#39;, &#39;buatcpatung&#39;: &#39;buatcpatung&#39;, &#39;idola&#39;: &#39;idola&#39;, &#39;ku&#39;: &#39;ku&#39;, &#39;president&#39;: &#39;president&#39;, &#39;breowok&#39;: &#39;breowok&#39;, &#39;boneka&#39;: &#39;boneka&#39;, &#39;meraja&#39;: &#39;raja&#39;, &#39;lela&#39;: &#39;lela&#39;, &#39;golkar&#39;: &#39;golkar&#39;, &#39;gorong&#39;: &#39;gorong&#39;, &#39;formula&#39;: &#39;formula&#39;, &#39;e&#39;: &#39;e&#39;, &#39;usut&#39;: &#39;usut&#39;, &#39;tuntas&#39;: &#39;tuntas&#39;, &#39;cewe&#39;: &#39;cewe&#39;, &#39;jok&#39;: &#39;jok&#39;, &#39;dsr&#39;: &#39;dsr&#39;, &#39;presdn&#39;: &#39;presdn&#39;, &#39;ta&#39;: &#39;ta&#39;, &#39;becus&#39;: &#39;becus&#39;, &#39;iris&#39;: &#39;iris&#39;, &#39;atur&#39;: &#39;atur&#39;, &#39;pemilu&#39;: &#39;milu&#39;, &#39;ha&#39;: &#39;ha&#39;, &#39;dukungan&#39;: &#39;dukung&#39;, &#39;bos&#39;: &#39;bos&#39;, &#39;menang&#39;: &#39;menang&#39;, &#39;dijadikan&#39;: &#39;jadi&#39;, &#39;lebihnya&#39;: &#39;lebih&#39;, &#39;minggu&#39;: &#39;minggu&#39;, &#39;lebaran&#39;: &#39;lebaran&#39;, &#39;udah&#39;: &#39;udah&#39;, &#39;bikin&#39;: &#39;bikin&#39;, &#39;dosa&#39;: &#39;dosa&#39;, &#39;bilang&#39;: &#39;bilang&#39;, &#39;gabecus&#39;: &#39;gabecus&#39;, &#39;kanau&#39;: &#39;kanau&#39;, &#39;niat&#39;: &#39;niat&#39;, &#39;silahkan&#39;: &#39;silah&#39;, &#39;pitnah&#39;: &#39;pitnah&#39;, &#39;sanah&#39;: &#39;sanah&#39;, &#39;sinih&#39;: &#39;sih&#39;, &#39;insa&#39;: &#39;insa&#39;, &#39;alloh&#39;: &#39;alloh&#39;, &#39;gabakalan&#39;: &#39;gabakalan&#39;, &#39;mema&#39;: &#39;mema&#39;, &#39;ap&#39;: &#39;ap&#39;, &#39;kon&#39;: &#39;kon&#39;, &#39;pemitnah&#39;: &#39;pemitnah&#39;, &#39;klo&#39;: &#39;klo&#39;, &#39;komen&#39;: &#39;komen&#39;, &#39;logis&#39;: &#39;logis&#39;, &#39;emang&#39;: &#39;emang&#39;, &#39;dajal&#39;: &#39;dajal&#39;, &#39;n&#39;: &#39;n&#39;, &#39;haknya&#39;: &#39;hak&#39;, &#39;fir&#39;: &#39;fir&#39;, &#39;aun&#39;: &#39;aun&#39;, &#39;ama&#39;: &#39;ama&#39;, &#39;href&#39;: &#39;href&#39;, &#39;www&#39;: &#39;www&#39;, &#39;youtube&#39;: &#39;youtube&#39;, &#39;com&#39;: &#39;com&#39;, &#39;watch&#39;: &#39;watch&#39;, &#39;v&#39;: &#39;v&#39;, &#39;lcpdhras&#39;: &#39;lcpdhras&#39;, &#39;t&#39;: &#39;t&#39;, &#39;ms&#39;: &#39;ms&#39;, &#39;sarak&#39;: &#39;sarak&#39;, &#39;irwan&#39;: &#39;irwan&#39;, &#39;ee&#39;: &#39;ee&#39;, &#39;pake&#39;: &#39;pake&#39;, &#39;kasih&#39;: &#39;kasih&#39;, &#39;yana&#39;: &#39;yana&#39;, &#39;nisnis&#39;: &#39;nisnis&#39;, &#39;panik&#39;: &#39;panik&#39;, &#39;nyungsep&#39;: &#39;nyungsep&#39;, &#39;ngawur&#39;: &#39;ngawur&#39;, &#39;yoh&#39;: &#39;yoh&#39;, &#39;yesus&#39;: &#39;yesus&#39;, &#39;kepadamu&#39;: &#39;kepada&#39;, &#39;sesungguhnya&#39;: &#39;sungguh&#39;, &#39;makan&#39;: &#39;makan&#39;, &#39;daging&#39;: &#39;daging&#39;, &#39;anak&#39;: &#39;anak&#39;, &#39;manusia&#39;: &#39;manusia&#39;, &#39;minum&#39;: &#39;minum&#39;, &#39;dirimu&#39;: &#39;diri&#39;, &#39;tuhan&#39;: &#39;tuhan&#39;, &#39;omongan&#39;: &#39;omong&#39;, &#39;suku&#39;: &#39;suku&#39;, &#39;kanibal&#39;: &#39;kanibal&#39;, &#39;kepala&#39;: &#39;kepala&#39;, &#39;zombie&#39;: &#39;zombie&#39;, &#39;mendengar&#39;: &#39;dengar&#39;, &#39;mengambil&#39;: &#39;ambil&#39;, &#39;waras&#39;: &#39;waras&#39;, &#39;markus&#39;: &#39;markus&#39;, &#39;terbukti&#39;: &#39;bukti&#39;, &#39;gila&#39;: &#39;gila&#39;, &#39;lukas&#39;: &#39;lukas&#39;, &#39;diserahkan&#39;: &#39;serah&#39;, &#39;berdosa&#39;: &#39;dosa&#39;, &#39;disalibkan&#39;: &#39;salib&#39;, &#39;ketiga&#39;: &#39;tiga&#39;, &#39;bangkit&#39;: &#39;bangkit&#39;, &#39;mayat&#39;: &#39;mayat&#39;, &#39;disuruh&#39;: &#39;suruh&#39;, &#39;sang&#39;: &#39;sang&#39;, &#39;rasul&#39;: &#39;rasul&#39;, &#39;nyembah&#39;: &#39;nyembah&#39;, &#39;roma&#39;: &#39;roma&#39;, &#39;ayat&#39;: &#39;ayat&#39;, &#39;mengaku&#39;: &#39;aku&#39;, &#39;mulutmu&#39;: &#39;mulut&#39;, &#39;percaya&#39;: &#39;percaya&#39;, &#39;hatimu&#39;: &#39;hati&#39;, &#39;membangkitkan&#39;: &#39;bangkit&#39;, &#39;diselamatkan&#39;: &#39;selamat&#39;, &#39;ajaran&#39;: &#39;ajar&#39;, &#39;perzombian&#39;: &#39;perzombian&#39;, &#39;azab&#39;: &#39;azab&#39;, &#39;kubur&#39;: &#39;kubur&#39;, &#39;siksa&#39;: &#39;siksa&#39;, &#39;neraka&#39;: &#39;neraka&#39;, &#39;dibenarkan&#39;: &#39;benar&#39;, &#39;kesana&#39;: &#39;kesana&#39;, &#39;kemari&#39;: &#39;kemari&#39;, &#39;intinya&#39;: &#39;inti&#39;, &#39;ngapain&#39;: &#39;ngapain&#39;, &#39;hotbah&#39;: &#39;hotbah&#39;, &#39;aneh&#39;: &#39;aneh&#39;, &#39;sblm&#39;: &#39;sblm&#39;, &#39;sklh&#39;: &#39;sklh&#39;, &#39;dlu&#39;: &#39;dlu&#39;, &#39;brti&#39;: &#39;brti&#39;, &#39;gurunya&#39;: &#39;guru&#39;, &#39;beritakan&#39;: &#39;berita&#39;, &#39;buku&#39;: &#39;buku&#39;, &#39;bibel&#39;: &#39;bibel&#39;, &#39;yehezkiel&#39;: &#39;yehezkiel&#39;, &#39;engkau&#39;: &#39;engkau&#39;, &#39;bersundal&#39;: &#39;sundal&#39;, &#39;bersetubuh&#39;: &#39;tubuh&#39;, &#39;ngentot&#39;: &#39;ngentot&#39;, &#39;tetangga&#39;: &#39;tetangga&#39;, &#39;mu&#39;: &#39;mu&#39;, &#39;org&#39;: &#39;org&#39;, &#39;mesir&#39;: &#39;mesir&#39;, &#39;aurat&#39;: &#39;aurat&#39;, &#39;zombi&#39;: &#39;zombi&#39;, &#39;biiasanya&#39;: &#39;biiasanya&#39;, &#39;serang&#39;: &#39;serang&#39;, &#39;jla&#39;: &#39;jla&#39;, &#39;tk&#39;: &#39;tk&#39;, &#39;menyerang&#39;: &#39;serang&#39;, &#39;kepanasan&#39;: &#39;panas&#39;, &#39;pendukung&#39;: &#39;dukung&#39;}
+-----------------------------
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_stemming</span><span class="p">(</span><span class="n">document</span><span class="p">):</span>
+  <span class="k">return</span> <span class="p">[</span><span class="n">term_dict</span><span class="p">[</span><span class="n">term</span><span class="p">]</span> <span class="k">for</span> <span class="n">term</span> <span class="ow">in</span> <span class="n">document</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;stemming&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;stopwords_removal_final&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">swifter</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">get_stemming</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "b8a16d5a7ac24e37ac9b0b8a2be48e69"}</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;stemming&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0      [ora, pengaruh, bro, bah, jokowi, endorse, bah...
+1      [jk, amp, paloh, ketar, tir, sampe, anis, kala...
+2                             [jusufkala, orqngtua, loh]
+3      [murtad, yohanes, bunglon, penghianat, bangsa,...
+4      [murtad, yohanes, binglon, takut, kalah, takut...
+                             ...                        
+102    [berita, jg, dgn, ayat, dlm, buku, bibel, yehe...
+103                                                [lll]
+104    [nama, nya, aja, agama, teroris, bajing, yg, r...
+105    [biiasanya, calon, yg, suka, serang, orang, jl...
+106    [calon, ga, serang, serang, panas, dukung, bos...
+Name: stemming, Length: 107, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-0b59371a-04e5-4481-928a-96d12cdf4175">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>publishedAt</th>
+      <th>authorDisplayName</th>
+      <th>text</th>
+      <th>likeCount</th>
+      <th>review_token</th>
+      <th>comment_normalize</th>
+      <th>stopwords_removal</th>
+      <th>stopwords_removal_final</th>
+      <th>stemming</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2023-05-10T12:08:32Z</td>
+      <td>Putra Putri</td>
+      <td>ora pengaruh bro  bah jokowi endorse bah cawe ...</td>
+      <td>0</td>
+      <td>[ora, pengaruh, bro, bah, jokowi, endorse, bah...</td>
+      <td>[ora, pengaruh, bro, bah, jokowi, endorse, bah...</td>
+      <td>[ora, pengaruh, bro, bah, jokowi, endorse, bah...</td>
+      <td>[ora, pengaruh, bro, bah, jokowi, endorse, bah...</td>
+      <td>[ora, pengaruh, bro, bah, jokowi, endorse, bah...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2023-05-10T08:55:05Z</td>
+      <td>Taufik Hasan</td>
+      <td>jelas dong jk  amp  paloh ketar ketir   kalau ...</td>
+      <td>1</td>
+      <td>[jelas, dong, jk, amp, paloh, ketar, ketir, ka...</td>
+      <td>[jelas, dong, jk, amp, paloh, ketar, ketir, ka...</td>
+      <td>[jk, amp, paloh, ketar, ketir, sampe, anis, ka...</td>
+      <td>[jk, amp, paloh, ketar, ketir, sampe, anis, ka...</td>
+      <td>[jk, amp, paloh, ketar, tir, sampe, anis, kala...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2023-05-10T08:04:32Z</td>
+      <td>a vian</td>
+      <td>jusufkala anda itu orqngtua loh</td>
+      <td>0</td>
+      <td>[jusufkala, anda, itu, orqngtua, loh]</td>
+      <td>[jusufkala, anda, itu, orqngtua, loh]</td>
+      <td>[jusufkala, orqngtua, loh]</td>
+      <td>[jusufkala, orqngtua, loh]</td>
+      <td>[jusufkala, orqngtua, loh]</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2023-05-10T07:12:57Z</td>
+      <td>ilham bobotoh</td>
+      <td>murtad yohanes bunglon  penghianat bangsa capr...</td>
+      <td>0</td>
+      <td>[murtad, yohanes, bunglon, penghianat, bangsa,...</td>
+      <td>[murtad, yohanes, bunglon, penghianat, bangsa,...</td>
+      <td>[murtad, yohanes, bunglon, penghianat, bangsa,...</td>
+      <td>[murtad, yohanes, bunglon, penghianat, bangsa,...</td>
+      <td>[murtad, yohanes, bunglon, penghianat, bangsa,...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2023-05-10T07:12:25Z</td>
+      <td>ilham bobotoh</td>
+      <td>murtad yohanes binglon takut kalah makanya dia...</td>
+      <td>1</td>
+      <td>[murtad, yohanes, binglon, takut, kalah, makan...</td>
+      <td>[murtad, yohanes, binglon, takut, kalah, makan...</td>
+      <td>[murtad, yohanes, binglon, takut, kalah, takut...</td>
+      <td>[murtad, yohanes, binglon, takut, kalah, takut...</td>
+      <td>[murtad, yohanes, binglon, takut, kalah, takut...</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2023-05-10T07:11:39Z</td>
+      <td>ilham bobotoh</td>
+      <td>jk itu penghianat bangsa si bunglon dari yaman...</td>
+      <td>0</td>
+      <td>[jk, itu, penghianat, bangsa, si, bunglon, dar...</td>
+      <td>[jk, itu, penghianat, bangsa, si, bunglon, dar...</td>
+      <td>[jk, penghianat, bangsa, si, bunglon, yaman, s...</td>
+      <td>[jk, penghianat, bangsa, si, bunglon, yaman, s...</td>
+      <td>[jk, penghianat, bangsa, si, bunglon, yaman, s...</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2023-05-10T05:05:43Z</td>
+      <td>Is Kandar</td>
+      <td>barangkali ada modal yg masuk</td>
+      <td>1</td>
+      <td>[barangkali, ada, modal, yg, masuk]</td>
+      <td>[barangkali, ada, modal, yg, masuk]</td>
+      <td>[barangkali, modal, yg, masuk]</td>
+      <td>[barangkali, modal, yg, masuk]</td>
+      <td>[barangkali, modal, yg, masuk]</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>2023-05-10T04:55:47Z</td>
+      <td>RDS88 official</td>
+      <td>saya tidak pro jokowi dari awal yaa</td>
+      <td>1</td>
+      <td>[saya, tidak, pro, jokowi, dari, awal, yaa]</td>
+      <td>[saya, tidak, pro, jokowi, dari, awal, yaa]</td>
+      <td>[pro, jokowi, yaa]</td>
+      <td>[pro, jokowi, yaa]</td>
+      <td>[pro, jokowi, yaa]</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>2023-05-10T04:45:58Z</td>
+      <td>Aki Genit 79</td>
+      <td>semua ingin jadi presiden  meskipun tdk jadi p...</td>
+      <td>1</td>
+      <td>[semua, ingin, jadi, presiden, meskipun, tdk, ...</td>
+      <td>[semua, ingin, jadi, presiden, meskipun, tdk, ...</td>
+      <td>[presiden, tdk, presiden, negara, presiden, ru...</td>
+      <td>[presiden, tdk, presiden, negara, presiden, ru...</td>
+      <td>[presiden, tdk, presiden, negara, presiden, ru...</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>2023-05-10T03:56:32Z</td>
+      <td>Sahi Rudin</td>
+      <td>biarlah urusan politik jgn di kaitkan dg agama...</td>
+      <td>0</td>
+      <td>[biarlah, urusan, politik, jgn, di, kaitkan, d...</td>
+      <td>[biarlah, urusan, politik, jgn, di, kaitkan, d...</td>
+      <td>[biarlah, urusan, politik, jgn, kaitkan, dg, a...</td>
+      <td>[biarlah, urusan, politik, jgn, kaitkan, dg, a...</td>
+      <td>[biar, urus, politik, jgn, kait, dg, agama, bi...</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>2023-05-10T03:00:49Z</td>
+      <td>WHeduez Ghiebaez</td>
+      <td>kumis tipis masih belum puas karena pa di era ...</td>
+      <td>1</td>
+      <td>[kumis, tipis, masih, belum, puas, karena, pa,...</td>
+      <td>[kumis, tipis, masih, belum, puas, karena, pa,...</td>
+      <td>[kumis, tipis, puas, pa, era, jokowi, bisnis, ...</td>
+      <td>[kumis, tipis, puas, pa, era, jokowi, bisnis, ...</td>
+      <td>[kumis, tipis, puas, pa, era, jokowi, bisnis, ...</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>2023-05-10T02:13:45Z</td>
+      <td>akio ciputra</td>
+      <td>si caplin jk ketar ketir  maju terus pak jokowi</td>
+      <td>1</td>
+      <td>[si, caplin, jk, ketar, ketir, maju, terus, pa...</td>
+      <td>[si, caplin, jk, ketar, ketir, maju, terus, pa...</td>
+      <td>[si, caplin, jk, ketar, ketir, maju, jokowi]</td>
+      <td>[si, caplin, jk, ketar, ketir, maju, jokowi]</td>
+      <td>[si, caplin, jk, ketar, tir, maju, jokowi]</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>2023-05-09T22:25:53Z</td>
+      <td>zainal arifin</td>
+      <td>jokowi  petugas partai bukan negarawan sejati</td>
+      <td>1</td>
+      <td>[jokowi, petugas, partai, bukan, negarawan, se...</td>
+      <td>[jokowi, petugas, partai, bukan, negarawan, se...</td>
+      <td>[jokowi, petugas, partai, negarawan, sejati]</td>
+      <td>[jokowi, petugas, partai, negarawan, sejati]</td>
+      <td>[jokowi, tugas, partai, negarawan, sejati]</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>2023-05-09T22:17:35Z</td>
+      <td>Mobile Game</td>
+      <td>rekam jejak anis benar</td>
+      <td>0</td>
+      <td>[rekam, jejak, anis, benar]</td>
+      <td>[rekam, jejak, anis, benar]</td>
+      <td>[rekam, jejak, anis]</td>
+      <td>[rekam, jejak, anis]</td>
+      <td>[rekam, jejak, anis]</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>2023-05-09T18:29:32Z</td>
+      <td>petualang chanel😱</td>
+      <td>awas jk udh terpilih cmn duduk di kursi</td>
+      <td>1</td>
+      <td>[awas, jk, udh, terpilih, cmn, duduk, di, kursi]</td>
+      <td>[awas, jk, udh, terpilih, cmn, duduk, di, kursi]</td>
+      <td>[awas, jk, udh, terpilih, cmn, duduk, kursi]</td>
+      <td>[awas, jk, udh, terpilih, cmn, duduk, kursi]</td>
+      <td>[awas, jk, udh, pilih, cmn, duduk, kursi]</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>2023-05-09T17:02:43Z</td>
+      <td>berak</td>
+      <td>chaplin nih tiap pilpres pasti nongol</td>
+      <td>1</td>
+      <td>[chaplin, nih, tiap, pilpres, pasti, nongol]</td>
+      <td>[chaplin, nih, tiap, pilpres, pasti, nongol]</td>
+      <td>[chaplin, nih, pilpres, nongol]</td>
+      <td>[chaplin, nih, pilpres, nongol]</td>
+      <td>[chaplin, nih, pilpres, nongol]</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>2023-05-09T16:17:03Z</td>
+      <td>Muhammad SAUU</td>
+      <td>marilah dukung channel tanparagi untuk pendidi...</td>
+      <td>0</td>
+      <td>[marilah, dukung, channel, tanparagi, untuk, p...</td>
+      <td>[marilah, dukung, channel, tanparagi, untuk, p...</td>
+      <td>[marilah, dukung, channel, tanparagi, pendidik...</td>
+      <td>[marilah, dukung, channel, tanparagi, pendidik...</td>
+      <td>[mari, dukung, channel, tanparagi, didik, isla...</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>2023-05-09T16:16:54Z</td>
+      <td>Muhammad SAUU</td>
+      <td>marilah dukung channel tanparagi untuk pendidi...</td>
+      <td>0</td>
+      <td>[marilah, dukung, channel, tanparagi, untuk, p...</td>
+      <td>[marilah, dukung, channel, tanparagi, untuk, p...</td>
+      <td>[marilah, dukung, channel, tanparagi, pendidik...</td>
+      <td>[marilah, dukung, channel, tanparagi, pendidik...</td>
+      <td>[mari, dukung, channel, tanparagi, didik, isla...</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>2023-05-09T14:58:10Z</td>
+      <td>@stvsurya09</td>
+      <td>cacing kena abu gosok pasti blingsatan boss</td>
+      <td>1</td>
+      <td>[cacing, kena, abu, gosok, pasti, blingsatan, ...</td>
+      <td>[cacing, kena, abu, gosok, pasti, blingsatan, ...</td>
+      <td>[cacing, kena, abu, gosok, blingsatan, boss]</td>
+      <td>[cacing, kena, abu, gosok, blingsatan, boss]</td>
+      <td>[cacing, kena, abu, gosok, blingsatan, boss]</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>2023-05-09T14:49:18Z</td>
+      <td>Muhammad Idris Idris</td>
+      <td>maju terus pak anies</td>
+      <td>0</td>
+      <td>[maju, terus, pak, anies]</td>
+      <td>[maju, terus, pak, anies]</td>
+      <td>[maju, anies]</td>
+      <td>[maju, anies]</td>
+      <td>[maju, anies]</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-0b59371a-04e5-4481-928a-96d12cdf4175')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+        
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+      
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-0b59371a-04e5-4481-928a-96d12cdf4175 button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-0b59371a-04e5-4481-928a-96d12cdf4175');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+  </div></div>
+</div>
+</div>
+</div>
+<div class="section" id="feature-extraction-tf-idf">
+<h2>Feature Extraction (TF-IDF)<a class="headerlink" href="#feature-extraction-tf-idf" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">joinkata</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+  <span class="n">kalimat</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+    <span class="n">kalimat</span> <span class="o">+=</span> <span class="n">i</span>
+    <span class="n">kalimat</span> <span class="o">+=</span> <span class="s2">&quot; &quot;</span>
+  <span class="k">return</span> <span class="n">kalimat</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;stemming&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">swifter</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">joinkata</span><span class="p">)</span>
+<span class="n">text</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "b4c7313a8e484f64b65939a83fbfd56e"}</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0      ora pengaruh bro bah jokowi endorse bah cawe c...
+1      jk amp paloh ketar tir sampe anis kalah hilang...
+2                                jusufkala orqngtua loh 
+3      murtad yohanes bunglon penghianat bangsa capre...
+4        murtad yohanes binglon takut kalah takut kalah 
+                             ...                        
+102    berita jg dgn ayat dlm buku bibel yehezkiel a ...
+103                                                 lll 
+104    nama nya aja agama teroris bajing yg ratus bun...
+105         biiasanya calon yg suka serang orang jla tk 
+106       calon ga serang serang panas dukung bos yaman 
+Name: stemming, Length: 107, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfVectorizer</span>
+
+<span class="c1"># Vectorize document using TF-IDF</span>
+<span class="n">tfidf</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">(</span><span class="n">lowercase</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="n">stop_words</span><span class="o">=</span><span class="s1">&#39;english&#39;</span><span class="p">,</span>
+                        <span class="n">ngram_range</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+                        <span class="p">)</span>
+
+<span class="c1"># Fit and Transform the documents</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">tfidf</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  (0, 122)	0.2509770726148333
+  (0, 150)	0.2509770726148333
+  (0, 628)	0.2509770726148333
+  (0, 80)	0.2509770726148333
+  (0, 265)	0.2509770726148333
+  (0, 97)	0.1879552670570942
+  (0, 123)	0.39142001901273193
+  (0, 174)	0.20488192310072553
+  (0, 268)	0.15308563254945073
+  (0, 44)	0.5019541452296666
+  (0, 99)	0.23057964401400946
+  (0, 472)	0.2509770726148333
+  (0, 447)	0.2509770726148333
+  (1, 67)	0.1934840655358963
+  (1, 646)	0.1934840655358963
+  (1, 294)	0.15794824213755035
+  (1, 444)	0.1934840655358963
+  (1, 95)	0.1934840655358963
+  (1, 361)	0.17775921317768006
+  (1, 325)	0.17775921317768006
+  (1, 256)	0.1934840655358963
+  (1, 287)	0.3869681310717926
+  (1, 108)	0.1934840655358963
+  (1, 512)	0.1666022528746911
+  (1, 327)	0.17775921317768006
+  :	:
+  (104, 8)	0.05957632240178965
+  (104, 144)	0.2206832822883817
+  (104, 184)	0.05517082057209542
+  (104, 405)	0.062368355791993686
+  (104, 438)	0.13088316042295325
+  (104, 246)	0.10673423262777654
+  (104, 3)	0.10350729574879614
+  (104, 148)	0.05336711631388827
+  (104, 410)	0.04896161448419404
+  (104, 676)	0.038346906566598414
+  (105, 631)	0.401514180987433
+  (105, 264)	0.401514180987433
+  (105, 580)	0.3688822885456953
+  (105, 81)	0.401514180987433
+  (105, 600)	0.3688822885456953
+  (105, 448)	0.2899450038127995
+  (105, 117)	0.34572959240011625
+  (105, 676)	0.20152852278374506
+  (106, 459)	0.3618454629498519
+  (106, 580)	0.6648750594290751
+  (106, 94)	0.2953879154858563
+  (106, 117)	0.31157226902877233
+  (106, 184)	0.2612990751076928
+  (106, 168)	0.2527564025581437
+  (106, 671)	0.33243752971453755
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_tfidf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="n">X</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;D</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">))],</span> <span class="n">index</span><span class="o">=</span><span class="n">tfidf</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()</span>
+<span class="p">)</span>
+<span class="n">df_tfidf</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-bc277184-4082-40dc-8da9-a022c436d6a2">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>D1</th>
+      <th>D2</th>
+      <th>D3</th>
+      <th>D4</th>
+      <th>D5</th>
+      <th>D6</th>
+      <th>D7</th>
+      <th>D8</th>
+      <th>D9</th>
+      <th>D10</th>
+      <th>...</th>
+      <th>D98</th>
+      <th>D99</th>
+      <th>D100</th>
+      <th>D101</th>
+      <th>D102</th>
+      <th>D103</th>
+      <th>D104</th>
+      <th>D105</th>
+      <th>D106</th>
+      <th>D107</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>aamiiin</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>abu</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>abud</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>agama</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.241344</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.103507</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>agus</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.057216</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>yoh</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.028979</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>yohanes</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.294951</td>
+      <td>0.304746</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>youtube</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.049905</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.182345</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>zombi</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.076400</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>zombie</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.144893</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>683 rows × 107 columns</p>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-bc277184-4082-40dc-8da9-a022c436d6a2')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+        
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+      
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-bc277184-4082-40dc-8da9-a022c436d6a2 button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-bc277184-4082-40dc-8da9-a022c436d6a2');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+  </div></div>
+</div>
+</div>
+<div class="section" id="latent-semantic-analysis-lsa">
+<h2>Latent Semantic Analysis (LSA)<a class="headerlink" href="#latent-semantic-analysis-lsa" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">TruncatedSVD</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the number of topics or components</span>
+<span class="n">num_components</span><span class="o">=</span><span class="mi">10</span>
+
+<span class="c1"># Create SVD object</span>
+<span class="n">lsa</span> <span class="o">=</span> <span class="n">TruncatedSVD</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="n">num_components</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Fit SVD model on data</span>
+<span class="n">lsa</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="c1"># Get Singular values and Components </span>
+<span class="n">Sigma</span> <span class="o">=</span> <span class="n">lsa</span><span class="o">.</span><span class="n">singular_values_</span> 
+<span class="n">V_transpose</span> <span class="o">=</span> <span class="n">lsa</span><span class="o">.</span><span class="n">components_</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print the topics with their terms</span>
+<span class="n">terms</span> <span class="o">=</span> <span class="n">tfidf</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">component</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lsa</span><span class="o">.</span><span class="n">components_</span><span class="p">):</span>
+    <span class="n">zipped</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="n">terms</span><span class="p">,</span> <span class="n">component</span><span class="p">)</span>
+    <span class="n">top_terms_key</span><span class="o">=</span><span class="nb">sorted</span><span class="p">(</span><span class="n">zipped</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]</span>
+    <span class="n">top_terms_list</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">top_terms_key</span><span class="p">)</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Topic &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">index</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;: &quot;</span><span class="p">,</span><span class="n">top_terms_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Topic 0:  [&#39;bajing&#39;, &#39;teroris&#39;, &#39;tembak&#39;, &#39;mati&#39;, &#39;dasar&#39;]
+Topic 1:  [&#39;ll&#39;, &#39;sarak&#39;, &#39;kemiri&#39;, &#39;lll&#39;, &#39;yana&#39;]
+Topic 2:  [&#39;anies&#39;, &#39;yg&#39;, &#39;maju&#39;, &#39;jk&#39;, &#39;anis&#39;]
+Topic 3:  [&#39;lll&#39;, &#39;sarak&#39;, &#39;yana&#39;, &#39;yg&#39;, &#39;anies&#39;]
+Topic 4:  [&#39;maju&#39;, &#39;anies&#39;, &#39;channel&#39;, &#39;didik&#39;, &#39;filosof&#39;]
+Topic 5:  [&#39;anies&#39;, &#39;presiden&#39;, &#39;banget&#39;, &#39;jd&#39;, &#39;negara&#39;]
+Topic 6:  [&#39;anis&#39;, &#39;presiden&#39;, &#39;ri&#39;, &#39;mantap&#39;, &#39;bos&#39;]
+Topic 7:  [&#39;presiden&#39;, &#39;yg&#39;, &#39;channel&#39;, &#39;didik&#39;, &#39;filosof&#39;]
+Topic 8:  [&#39;cawe&#39;, &#39;jokowi&#39;, &#39;presiden&#39;, &#39;br&#39;, &#39;si&#39;]
+Topic 9:  [&#39;cawe&#39;, &#39;br&#39;, &#39;mantap&#39;, &#39;ri&#39;, &#39;anis&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./tugas-prosaindata"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crawling-data-dari-komentar-youtube">Crawling Data Dari Komentar Youtube</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing">Preprocessing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#symbol-punctuation-removal-case-folding">1. Symbol &amp; Punctuation Removal, case folding</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenizing">2. Tokenizing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#word-normalization">3. Word Normalization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stopwords-removal">4. Stopwords Removal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stemming">5. Stemming</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-extraction-tf-idf">Feature Extraction (TF-IDF)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#latent-semantic-analysis-lsa">Latent Semantic Analysis (LSA)</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
